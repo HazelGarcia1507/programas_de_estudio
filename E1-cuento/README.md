@@ -12,8 +12,8 @@ Objetivo:
 
 ## Siguientes pasos
 - Implementacion de ciclo while para generar una historia nueva
--Implementacion de delimitacion en escritua, no permitir numeros o caracteres.
-- La explicacion de que es un verbo, adejtivo y sustantivos tendra una pequeña parte de examen para corroborar que se entendio cada categoria gramatical
+-Implementacion de de limitacion en escritura, no permitir numeros o caracteres.
+- La explicacion de que es un verbo, adjetivo y sustantivos tendra una pequeña parte de examen para corroborar que se entendio cada categoria gramatical (este paso se realizara en otro ejercicio)
 -IMPORTANTE: En el futuro crear interfaz en HTML para visualizarlo mejor
 
 ## Informacion de referencia
@@ -27,7 +27,7 @@ Objetivo:
 
 ## Initial Flowchart
 
-![Flowchart](images/flowchart_v1.jpg)
----
+![Flowchart 1](images/flowchart_1.jpg)
+![Flowchart 2](images/flowchart_2.jpg)
 
 Esta es la verion numero 1 de un pequeño programa de estudio para una niña de 6 años
