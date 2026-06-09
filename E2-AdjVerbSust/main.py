@@ -10,32 +10,41 @@
 #     "verbo" = ["correr", "cantar", "aprender", "escribir", "dormir", "construir", "pensar", "cocinar", "escuchar", "viajar" ]
 # }
 
+
+
 #Inicio del programa
-
-print ("Un sustantivo es el nombre de algo, puede ser persona, animal")
-print ("a = casa"),
-print ("b = grande"),
-print ("c = correr")
-
-sust = input("Cual es un sustantivo? ")
-
 
 a = "casa"
 b = "grande"
 c = "correr"
 
-if sust == a:
-    print (f"Correcto! {sust} es un sustantivo!")
-else:
-    print (f"Error! el sustantivo es casa")
+print ("Un sustantivo es el nombre de algo, puede ser persona, animal. Si: ")
+print ("a = casa"),
+print ("b = grande"),
+print ("c = correr")
+sust = input("Cual es un sustantivo? ")
 
+ 
+while sust == b or sust == c:
+        print (f"Error! intenta de nuevo!")
+        print ("Un sustantivo es el nombre de algo, puede ser persona, animal. Si: ")
+        print ("a = casa"),
+        print ("b = grande"),
+        print ("c = correr")
+        sust = input("Cual es un sustantivo? ")
+
+        if sust == a:
+             print (f"Correcto! {sust} es un sustantivo!")
+             break
 
 
 
 #Repeticion del juego. 
 #PENDIENTE CICLO WHILE mientras no de la respuesta correcta y por 3 ocasiones
 
-
+a = "perro"
+b = "inteligente"
+c = "aprender"
 
 print ("Un adjetivo es una palabra que describe algo como, grande, frio, caliente")
 print ("a = perro"),
@@ -45,20 +54,28 @@ print ("c = aprender")
 adj = input("Cual es un adjetivo? ")
 
 
-a = "perro"
-b = "inteligente"
-c = "aprender"
+while adj == a or adj == c:
+        print (f"Error! intenta de nuevo!")
+        print ("Un adjetivo es una palabra que describe algo como, grande, frio, caliente.  Si: ")
+        print ("a = perro"),
+        print ("b = inteligente"),
+        print ("c = aprender")
+        adj = input("Cual es un adjetivo? ")
 
-if adj == b:
-    print (f"Correcto! {adj} es un adjetivo!")
-else:
-    print (f"Error! el adjetivo es inteligente")
+        if adj == b:
+             print (f"Correcto! {adj} es un adjetivo!")
+             break
+
+
 
 
 #Repeticion del juego. 
 #PENDIENTE CICLO WHILE mientras no de la respuesta correcta y por 3 ocasiones
 
 
+a = "medico"
+b = "rapido"
+c = "construir"
 
 print ("Un verbo es una accion, es algo que alguien hace como correr, cantar aprender, escribir")
 print ("a = medico"),
@@ -67,12 +84,15 @@ print ("c = construir")
 
 verb = input("Cual es un verbo? ")
 
+while verb == a or verb == b:
+        print (f"Error! intenta de nuevo!")
+        print ("Un verbo es una accion, es algo que alguien hace como correr, cantar aprender, escribir.  Si: ")
+        print ("a = medico"),
+        print ("b = rapido"),
+        print ("c = cosntruir")
+        verb = input("Cual es un verbo? ")
 
-a = "medico"
-b = "rapido"
-c = "construir"
+        if verb == c:
+             print (f"Correcto! {verb} es un verbo!")
+             break
 
-if verb == b:
-    print (f"Correcto! {verb} es un verbo!")
-else:
-    print (f"Error! el verbo es construir")
