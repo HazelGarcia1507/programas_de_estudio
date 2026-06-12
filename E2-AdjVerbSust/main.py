@@ -13,38 +13,55 @@
 
 
 #Inicio del programa
+#Se añadio los 3 intentos del ciclo while
+
+#Seccion de SUSTANTIVOS
 
 a = "casa"
 b = "grande"
 c = "correr"
+intentoSus = 0
 
-print ("Un sustantivo es el nombre de algo, puede ser persona, animal. Si: ")
+print ("Un sustantivo es el nombre de algo, puede ser persona, animal o cosa. Si: ")
 print ("a = casa"),
 print ("b = grande"),
 print ("c = correr")
 sust = input("Cual es un sustantivo? ")
 
- 
-while sust == b or sust == c:
-        print (f"Error! intenta de nuevo!")
-        print ("Un sustantivo es el nombre de algo, puede ser persona, animal. Si: ")
-        print ("a = casa"),
-        print ("b = grande"),
-        print ("c = correr")
-        sust = input("Cual es un sustantivo? ")
-
-        if sust == a:
-             print (f"Correcto! {sust} es un sustantivo!")
-             break
 
 
+while sust !=a and intentoSus < 2:
+    print(f"Error! Intenta de nuevo!")
+    intentoSus = intentoSus + 1
+    print("")
+    print(f"Llevas {intentoSus} intentos")
+    print ("")
+    print("Un sustantivo es el nombre de algo, puede ser persona, animal o cosa. Si: ")
+    print("a = casa")
+    print("b = grande")
+    print("c = correr")
+    sust = input("Cual es un sustantivo? ")
 
-#Repeticion del juego. 
-#PENDIENTE CICLO WHILE mientras no de la respuesta correcta y por 3 ocasiones
+if sust == a:
+    print("")
+    print(f"Correcto! {sust} es un sustantivo!")
+    print("")
+else:
+      intentoSus = intentoSus + 1
+      print("")
+      print(f"Llevas {intentoSus} intentos")
+      print("")
+      print("Lo siento! te quedaste sin intentos!")
+      print("")
+
+
+#LISTO CICLO WHILE mientras no de la respuesta correcta y por 3 ocasiones
+#Seccion de ADJETIVOS
 
 a = "perro"
 b = "inteligente"
 c = "aprender"
+intentoAdj = 0
 
 print ("Un adjetivo es una palabra que describe algo como, grande, frio, caliente")
 print ("a = perro"),
@@ -54,28 +71,39 @@ print ("c = aprender")
 adj = input("Cual es un adjetivo? ")
 
 
-while adj == a or adj == c:
-        print (f"Error! intenta de nuevo!")
-        print ("Un adjetivo es una palabra que describe algo como, grande, frio, caliente.  Si: ")
-        print ("a = perro"),
-        print ("b = inteligente"),
-        print ("c = aprender")
-        adj = input("Cual es un adjetivo? ")
+while adj !=b and intentoAdj < 2:
+    print(f"Error! Intenta de nuevo!")
+    intentoAdj = intentoAdj + 1
+    print("")
+    print(f"Llevas {intentoAdj} intentos")
+    print ("")
+    print ("Un adjetivo es una palabra que describe algo como, grande, frio, caliente")
+    print ("a = perro"),
+    print ("b = inteligente"),
+    print ("c = aprender")
+    adj = input("Cual es un adjetivo? ")
 
-        if adj == b:
-             print (f"Correcto! {adj} es un adjetivo!")
-             break
+if adj == b:
+    print("")
+    print(f"Correcto! {adj} es un adjetivo!")
+    print("")
+else:
+      intentoAdj = intentoAdj + 1
+      print("")
+      print(f"Llevas {intentoAdj} intentos")
+      print("")
+      print("Lo siento! te quedaste sin intentos!")
+      print("")
 
 
 
-
-#Repeticion del juego. 
-#PENDIENTE CICLO WHILE mientras no de la respuesta correcta y por 3 ocasiones
-
+#LISTO CICLO WHILE mientras no de la respuesta correcta y por 3 ocasiones
+#Seccion de VERBOS
 
 a = "medico"
 b = "rapido"
 c = "construir"
+intentoVerb = 0
 
 print ("Un verbo es una accion, es algo que alguien hace como correr, cantar aprender, escribir")
 print ("a = medico"),
@@ -84,15 +112,26 @@ print ("c = construir")
 
 verb = input("Cual es un verbo? ")
 
-while verb == a or verb == b:
-        print (f"Error! intenta de nuevo!")
-        print ("Un verbo es una accion, es algo que alguien hace como correr, cantar aprender, escribir.  Si: ")
-        print ("a = medico"),
-        print ("b = rapido"),
-        print ("c = cosntruir")
-        verb = input("Cual es un verbo? ")
+while verb !=c and intentoVerb < 2:
+    print(f"Error! Intenta de nuevo!")
+    intentoVerb = intentoVerb + 1
+    print("")
+    print(f"Llevas {intentoVerb} intentos")
+    print ("")
+    print ("Un verbo es una accion, es algo que alguien hace como correr, cantar aprender, escribir")
+    print ("a = medico"),
+    print ("b = rapido"),
+    print ("c = construir")
+    verb = input("Cual es un verbo? ")
 
-        if verb == c:
-             print (f"Correcto! {verb} es un verbo!")
-             break
-
+if verb == c:
+    print("")
+    print(f"Correcto! {verb} es un verbo!")
+    print("")
+else:
+      intentoVerb = intentoVerb + 1
+      print("")
+      print(f"Llevas {intentoVerb} intentos")
+      print("")
+      print("Lo siento! te quedaste sin intentos!")
+      print("")
