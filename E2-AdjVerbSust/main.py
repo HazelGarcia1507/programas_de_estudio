@@ -184,8 +184,9 @@ puntoExtra = 1
 
 print ("Si la opcion 1 es Calificacion ")
 print ("Y la opcion 2 son Respuestas correctas")
-
+print ("")
 total = input("Como quieres tu resultado? 1 o 2?")
+print ("")
 
 while total != a and total != b :
     print("Intenta con otra opcion")
@@ -194,6 +195,7 @@ while total != a and total != b :
     print ("Y la opcion 2 son Respuestas correctas")
     print("")
     total = input("Como quieres tu resultado? 1 o 2?")
+    print("")
     
     
 if total == a:
@@ -202,6 +204,24 @@ if total == a:
     print (f"Tu calificacion final es: {calif}")
 
 elif total == b:
-    print("Felicidades!")
-    print (f"Tuviste un total de {RC} preguntas correctas de 4")
+    
+    msj4 = "Excelente trabajo!! Todas tus respuestas fueron correctas! Felicidades!"
+    msj3 = "Ya casi lo logras! Excelente trabajo!"
+    msj2 = "Vas mejorando! Muy bien! Sigue practicando!"
+    msj1 = "No pasa nada! Sigamos practicando!"
 
+    if RC == 4:
+         print (f"Tuviste {RC} preguntas correctas de 4!")
+         print (msj4)
+
+    elif RC == 3:
+         print (f"Tuviste {RC} preguntas correctas de 4!")
+         print (msj3)
+
+    elif RC == 2:
+         print (f"Tuviste {RC} preguntas correctas de 4!")
+         print (msj2)   
+
+    elif RC == 1:
+         print (f"Tuviste {RC} preguntas correctas de 4!")
+         print (msj1)
