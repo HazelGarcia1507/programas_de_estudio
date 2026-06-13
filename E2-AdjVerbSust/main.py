@@ -21,6 +21,7 @@ a = "casa"
 b = "grande"
 c = "correr"
 intentoSus = 0
+RC = 0
 
 print ("Un sustantivo es el nombre de algo, puede ser persona, animal o cosa. Si: ")
 print ("a = casa"),
@@ -46,6 +47,10 @@ if sust == a:
     print("")
     print(f"Correcto! {sust} es un sustantivo!")
     print("")
+    RC = RC + 1
+    print(f"Llevas {RC} punto!")
+    print("")
+
 else:
       intentoSus = intentoSus + 1
       print("")
@@ -87,6 +92,10 @@ if adj == b:
     print("")
     print(f"Correcto! {adj} es un adjetivo!")
     print("")
+    RC = RC + 1
+    print (f"Llevas {RC} puntos!")
+    print ("")
+
 else:
       intentoAdj = intentoAdj + 1
       print("")
@@ -128,6 +137,9 @@ if verb == c:
     print("")
     print(f"Correcto! {verb} es un verbo!")
     print("")
+    RC = RC + 1
+    print (f"Llevas {RC} puntos!")
+    print("")
 else:
       intentoVerb = intentoVerb + 1
       print("")
@@ -135,3 +147,61 @@ else:
       print("")
       print("Lo siento! te quedaste sin intentos!")
       print("")
+
+
+#Pregunta extra de juego
+
+a = "1"
+b = "2"
+
+print("Hora de la pregunta mas importante! Si:")
+print("")
+print(" 1 = Mama ama mas a Alice")
+print(" 2 = Alice ama mas mama")
+print("")
+mas = input("Quien ama mas a quien? 1 o 2?")
+
+
+while mas != a:
+     print("")
+     print("incorrecto! Intentalo de nuevo! Si: ")
+     print("")
+     print(" 1 = Mama ama mas a Alice")
+     print (" 2 = Alice ama mas mama")
+     mas = input("Quien ama mas a quien? 1 o 2?")
+     
+print("Correcto! Mama ama mas a Alice!")
+RC = RC + 1
+print (f"Llevas {RC} puntos!")
+print("")
+
+
+
+#EVALUACION
+a = "1"
+b = "2"
+puntoExtra = 1
+
+print ("Si la opcion 1 es Calificacion ")
+print ("Y la opcion 2 son Respuestas correctas")
+
+total = input("Como quieres tu resultado? 1 o 2?")
+
+while total != a and total != b :
+    print("Intenta con otra opcion")
+    print("")
+    print ("Si la opcion 1 es Calificacion ")
+    print ("Y la opcion 2 son Respuestas correctas")
+    print("")
+    total = input("Como quieres tu resultado? 1 o 2?")
+    
+    
+if total == a:
+    calif = 10 - intentoSus - intentoAdj - intentoVerb + puntoExtra
+    print ("Felicidades!")
+    print (f"Tu calificacion final es: {calif}")
+
+elif total == b:
+    print("Felicidades!")
+    print (f"Tuviste un total de {RC} preguntas correctas de 4")
+
