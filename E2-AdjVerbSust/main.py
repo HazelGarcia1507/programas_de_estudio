@@ -1,17 +1,5 @@
 #Creacion de programa para memorizar que es un Sustantivo, un verbo y un adjetivo
 
-#Repositorio de Categorias gramaticales
-
-# gramatica = {
-#     "sustantivo" = ["casa", "perro", "medico", "computadora", "mexico", "amor", "guitarra", "parque", "felicidad", "estudiante" ],
-    
-#     "adjetivo" = ["grande", "inteligente", "rapido", "azul", "antiguo", "amable", "roto", "brillante", "frio", "divertido"],
-
-#     "verbo" = ["correr", "cantar", "aprender", "escribir", "dormir", "construir", "pensar", "cocinar", "escuchar", "viajar" ]
-# }
-
-
-
 #Inicio del programa
 #Se incorpora la triple comilla para parrafos
 
@@ -26,21 +14,36 @@ Vamos a practicar sustantivos, adjetivos y verbos.
 ¡Diviértete!
 """)
 
+
+
+#REPOSITORIOS
+
+import random
+
+sustantivo = ["casa", "perro", "medico", "computadora", "mexico", "amor", "guitarra", "parque", "felicidad", "estudiante" ]
+adjetivo = ["grande", "inteligente", "rapido", "azul", "antiguo", "amable", "roto", "brillante", "frio", "divertido"]
+verbo = ["correr", "cantar", "aprender", "escribir", "dormir", "construir", "pensar", "cocinar", "escuchar", "viajar" ]
+
+sustCorrecto = random.choice(sustantivo)
+adjCorrecto = random.choice(adjetivo)
+verbCorrecto = random.choice(verbo)
+
 #Seccion de SUSTANTIVOS
 
-a = "casa"
-b = "grande"
-c = "correr"
+a = sustCorrecto
+b = adjCorrecto
+c = verbCorrecto
+
 intentoSus = 0
 RC = 0
 
-print ("""
+print (f"""
 Un sustantivo es el nombre de algo, 
 puede ser persona, animal o cosa. Si:
 
-a = casa
-b = grande
-c = correr
+a = {sustCorrecto}
+b = {adjCorrecto}
+c = {verbCorrecto}
 """)
 sust = input("Cual es un sustantivo? ")
 
@@ -54,12 +57,12 @@ while sust !=a and intentoSus < 2:
     
     Llevas {intentoSus} intentos
     
-    Un sustantivo es el nombre de algo, 
-    puede ser persona, animal o cosa. Si: 
+ Un sustantivo es el nombre de algo, 
+ puede ser persona, animal o cosa. Si: 
 
-    a = casa
-    b = grande
-    c = correr
+ a = {sustCorrecto}
+ b = {adjCorrecto}
+ c = {verbCorrecto}
     """)
     sust = input("Cual es un sustantivo? ")
 
@@ -83,17 +86,23 @@ else:
 #Se incorpora la triple comilla para parrafos
 #Seccion de ADJETIVOS
 
-a = "perro"
-b = "inteligente"
-c = "aprender"
+
+sustCorrecto = random.choice(sustantivo)
+adjCorrecto = random.choice(adjetivo)
+verbCorrecto = random.choice(verbo)
+
+a = sustCorrecto
+b = adjCorrecto
+c = verbCorrecto
+
 intentoAdj = 0
 
-print ("""Un adjetivo es una palabra que describe
+print (f"""Un adjetivo es una palabra que describe
 algo como, grande, frio, caliente. Si:
        
-a = perro
-b = inteligente
-c = aprender
+a = {sustCorrecto}
+b = {adjCorrecto}
+c = {verbCorrecto}
 """)
 
 adj = input("Cual es un adjetivo? ")
@@ -106,12 +115,12 @@ while adj !=b and intentoAdj < 2:
     
     Llevas {intentoAdj} intentos
     
-    Un adjetivo es una palabra que describe 
-    algo como, grande, frio, caliente. Si: 
+ Un adjetivo es una palabra que describe 
+ algo como, grande, frio, caliente. Si: 
 
-    a = perro
-    b = inteligente
-    c = aprender
+ a = {sustCorrecto}
+ b = {adjCorrecto}
+ c = {verbCorrecto}
     """)
     adj = input("Cual es un adjetivo? ")
 
@@ -136,17 +145,22 @@ else:
 #Se incorpora la triple comilla para parrafos
 #Seccion de VERBOS
 
-a = "medico"
-b = "rapido"
-c = "construir"
+sustCorrecto = random.choice(sustantivo)
+adjCorrecto = random.choice(adjetivo)
+verbCorrecto = random.choice(verbo)
+
+a = sustCorrecto
+b = adjCorrecto
+c = verbCorrecto
+
 intentoVerb = 0
 
-print ("""Un verbo es una accion, es algo que alguien 
+print (f"""Un verbo es una accion, es algo que alguien 
 hace como correr, cantar aprender, escribir. Si:
        
-a = medico
-b = rapido
-c = construir
+a = {sustCorrecto}
+b = {adjCorrecto}
+c = {verbCorrecto}
 """)
 
 verb = input("Cual es un verbo? ")
@@ -158,12 +172,12 @@ while verb !=c and intentoVerb < 2:
     
     Llevas {intentoVerb} intentos
     
-    Un verbo es una accion, es algo que alguien 
-    hace como correr, cantar aprender, escribir. Si:
+ Un verbo es una accion, es algo que alguien 
+ hace como correr, cantar aprender, escribir. Si:
 
-    a = medico
-    b = rapido
-    c = construir
+a = {sustCorrecto}
+b = {adjCorrecto}
+c = {verbCorrecto}
     """)
 
     verb = input("Cual es un verbo? ")
@@ -210,18 +224,18 @@ while mas != a:
 
 RC = RC + 1     
 print( f"""
-Correcto! Mama ama mas a Alice!
-Llevas {RC} puntos!
+    Correcto! Mama ama mas a Alice!
+    Llevas {RC} puntos!
 """)
 
 
 
 #EVALUACION
 
-msj4 = "Excelente trabajo!! \n Todas tus respuestas fueron correctas! \n Felicidades! Sacaste 100!"
-msj3 = "Ya casi lo logras! \n Excelente trabajo! \n Sacaste 80!"
-msj2 = "Vas mejorando! Muy bien! \n Sigue practicando! \n Sacaste 60!"
-msj1 = "No pasa nada!\n Sigamos practicando!"
+msj4 = "Excelente trabajo!! \nTodas tus respuestas fueron correctas! \nFelicidades! Sacaste 100!"
+msj3 = "Ya casi lo logras! \nExcelente trabajo! \nSacaste 80!"
+msj2 = "Vas mejorando! Muy bien! \nSigue practicando! \nSacaste 60!"
+msj1 = "No pasa nada!\nSigamos practicando!"
 msj0 = "Tranquila, volveremos a intentarlo!"
 
 if RC == 4:
