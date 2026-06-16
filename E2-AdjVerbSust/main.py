@@ -13,7 +13,18 @@
 
 
 #Inicio del programa
-#Se añadio los 3 intentos del ciclo while
+#Se incorpora la triple comilla para parrafos
+
+#BIENVENIDA
+nombre = input("Como te llamas?")
+
+print(f"""
+¡Hola {nombre}!
+
+Vamos a practicar sustantivos, adjetivos y verbos.
+
+¡Diviértete!
+""")
 
 #Seccion de SUSTANTIVOS
 
@@ -23,44 +34,53 @@ c = "correr"
 intentoSus = 0
 RC = 0
 
-print ("Un sustantivo es el nombre de algo, puede ser persona, animal o cosa. Si: ")
-print ("a = casa"),
-print ("b = grande"),
-print ("c = correr")
+print ("""
+Un sustantivo es el nombre de algo, 
+puede ser persona, animal o cosa. Si:
+
+a = casa
+b = grande
+c = correr
+""")
 sust = input("Cual es un sustantivo? ")
 
 
 
 while sust !=a and intentoSus < 2:
-    print(f"Error! Intenta de nuevo!")
     intentoSus = intentoSus + 1
-    print("")
-    print(f"Llevas {intentoSus} intentos")
-    print ("")
-    print("Un sustantivo es el nombre de algo, puede ser persona, animal o cosa. Si: ")
-    print("a = casa")
-    print("b = grande")
-    print("c = correr")
+
+    print(f"""
+    Error! Intenta de nuevo!
+    
+    Llevas {intentoSus} intentos
+    
+    Un sustantivo es el nombre de algo, 
+    puede ser persona, animal o cosa. Si: 
+
+    a = casa
+    b = grande
+    c = correr
+    """)
     sust = input("Cual es un sustantivo? ")
 
 if sust == a:
-    print("")
-    print(f"Correcto! {sust} es un sustantivo!")
-    print("")
     RC = RC + 1
-    print(f"Llevas {RC} punto!")
-    print("")
+    print(f"""
+    Correcto! {sust} es un sustantivo!
+    
+    Llevas {RC} punto!
+    """)
 
 else:
       intentoSus = intentoSus + 1
-      print("")
-      print(f"Llevas {intentoSus} intentos")
-      print("")
-      print("Lo siento! te quedaste sin intentos!")
-      print("")
+      print(f"""
+      Llevas {intentoSus} intentos
+      
+      Lo siento! te quedaste sin intentos!
+      """)
 
 
-#LISTO CICLO WHILE mientras no de la respuesta correcta y por 3 ocasiones
+#Se incorpora la triple comilla para parrafos
 #Seccion de ADJETIVOS
 
 a = "perro"
@@ -68,45 +88,52 @@ b = "inteligente"
 c = "aprender"
 intentoAdj = 0
 
-print ("Un adjetivo es una palabra que describe algo como, grande, frio, caliente")
-print ("a = perro"),
-print ("b = inteligente"),
-print ("c = aprender")
+print ("""Un adjetivo es una palabra que describe
+algo como, grande, frio, caliente. Si:
+       
+a = perro
+b = inteligente
+c = aprender
+""")
 
 adj = input("Cual es un adjetivo? ")
 
 
 while adj !=b and intentoAdj < 2:
-    print(f"Error! Intenta de nuevo!")
     intentoAdj = intentoAdj + 1
-    print("")
-    print(f"Llevas {intentoAdj} intentos")
-    print ("")
-    print ("Un adjetivo es una palabra que describe algo como, grande, frio, caliente")
-    print ("a = perro"),
-    print ("b = inteligente"),
-    print ("c = aprender")
+    print(f"""
+    Error! Intenta de nuevo!
+    
+    Llevas {intentoAdj} intentos
+    
+    Un adjetivo es una palabra que describe 
+    algo como, grande, frio, caliente. Si: 
+
+    a = perro
+    b = inteligente
+    c = aprender
+    """)
     adj = input("Cual es un adjetivo? ")
 
 if adj == b:
-    print("")
-    print(f"Correcto! {adj} es un adjetivo!")
-    print("")
     RC = RC + 1
-    print (f"Llevas {RC} puntos!")
-    print ("")
+    print(f"""
+    Correcto! {adj} es un adjetivo!
+    
+    Llevas {RC} puntos!
+    """)
 
 else:
       intentoAdj = intentoAdj + 1
-      print("")
-      print(f"Llevas {intentoAdj} intentos")
-      print("")
-      print("Lo siento! te quedaste sin intentos!")
-      print("")
+      print(f"""
+      Llevas {intentoAdj} intentos
+      
+      Lo siento! te quedaste sin intentos!
+      """)
 
 
 
-#LISTO CICLO WHILE mientras no de la respuesta correcta y por 3 ocasiones
+#Se incorpora la triple comilla para parrafos
 #Seccion de VERBOS
 
 a = "medico"
@@ -114,114 +141,105 @@ b = "rapido"
 c = "construir"
 intentoVerb = 0
 
-print ("Un verbo es una accion, es algo que alguien hace como correr, cantar aprender, escribir")
-print ("a = medico"),
-print ("b = rapido"),
-print ("c = construir")
+print ("""Un verbo es una accion, es algo que alguien 
+hace como correr, cantar aprender, escribir. Si:
+       
+a = medico
+b = rapido
+c = construir
+""")
 
 verb = input("Cual es un verbo? ")
 
 while verb !=c and intentoVerb < 2:
-    print(f"Error! Intenta de nuevo!")
     intentoVerb = intentoVerb + 1
-    print("")
-    print(f"Llevas {intentoVerb} intentos")
-    print ("")
-    print ("Un verbo es una accion, es algo que alguien hace como correr, cantar aprender, escribir")
-    print ("a = medico"),
-    print ("b = rapido"),
-    print ("c = construir")
+    print(f"""
+    Error! Intenta de nuevo!
+    
+    Llevas {intentoVerb} intentos
+    
+    Un verbo es una accion, es algo que alguien 
+    hace como correr, cantar aprender, escribir. Si:
+
+    a = medico
+    b = rapido
+    c = construir
+    """)
+
     verb = input("Cual es un verbo? ")
 
 if verb == c:
-    print("")
-    print(f"Correcto! {verb} es un verbo!")
-    print("")
     RC = RC + 1
-    print (f"Llevas {RC} puntos!")
-    print("")
+    print(f"""
+    Correcto! {verb} es un verbo!
+    Llevas {RC} puntos!
+    """)
 else:
       intentoVerb = intentoVerb + 1
-      print("")
-      print(f"Llevas {intentoVerb} intentos")
-      print("")
-      print("Lo siento! te quedaste sin intentos!")
-      print("")
+      print(f"""
+      Llevas {intentoVerb} intentos
+      
+      Lo siento! te quedaste sin intentos!
+      """)
 
 
+#Se incorpora la triple comilla para parrafos
 #Pregunta extra de juego
 
 a = "1"
 b = "2"
 
-print("Hora de la pregunta mas importante! Si:")
-print("")
-print(" 1 = Mama ama mas a Alice")
-print(" 2 = Alice ama mas mama")
-print("")
+print("""
+Hora de la pregunta mas importante! Si:
+
+1 = Mama ama mas a Alice
+2 = Alice ama mas a mama
+""")
 mas = input("Quien ama mas a quien? 1 o 2?")
 
 
 while mas != a:
-     print("")
-     print("incorrecto! Intentalo de nuevo! Si: ")
-     print("")
-     print(" 1 = Mama ama mas a Alice")
-     print (" 2 = Alice ama mas mama")
-     mas = input("Quien ama mas a quien? 1 o 2?")
+     print("""
+     Incorrecto! Intentalo de nuevo! Si:
      
-print("Correcto! Mama ama mas a Alice!")
-RC = RC + 1
-print (f"Llevas {RC} puntos!")
-print("")
+1 = Mama ama mas a Alice
+2 = Alice ama mas a mama
+    """)
+
+     mas = input("Quien ama mas a quien? 1 o 2?")
+
+RC = RC + 1     
+print( f"""
+Correcto! Mama ama mas a Alice!
+Llevas {RC} puntos!
+""")
 
 
 
 #EVALUACION
-a = "1"
-b = "2"
-puntoExtra = 1
 
-print ("Si la opcion 1 es Calificacion ")
-print ("Y la opcion 2 son Respuestas correctas")
-print ("")
-total = input("Como quieres tu resultado? 1 o 2?")
-print ("")
+msj4 = "Excelente trabajo!! \n Todas tus respuestas fueron correctas! \n Felicidades! Sacaste 100!"
+msj3 = "Ya casi lo logras! \n Excelente trabajo! \n Sacaste 80!"
+msj2 = "Vas mejorando! Muy bien! \n Sigue practicando! \n Sacaste 60!"
+msj1 = "No pasa nada!\n Sigamos practicando!"
+msj0 = "Tranquila, volveremos a intentarlo!"
 
-while total != a and total != b :
-    print("Intenta con otra opcion")
-    print("")
-    print ("Si la opcion 1 es Calificacion ")
-    print ("Y la opcion 2 son Respuestas correctas")
-    print("")
-    total = input("Como quieres tu resultado? 1 o 2?")
-    print("")
-    
-    
-if total == a:
-    calif = 10 - intentoSus - intentoAdj - intentoVerb + puntoExtra
-    print ("Felicidades!")
-    print (f"Tu calificacion final es: {calif}")
+if RC == 4:
+        print (f"Tuviste {RC} preguntas correctas de 4!")
+        print (msj4)
 
-elif total == b:
-    
-    msj4 = "Excelente trabajo!! Todas tus respuestas fueron correctas! Felicidades!"
-    msj3 = "Ya casi lo logras! Excelente trabajo!"
-    msj2 = "Vas mejorando! Muy bien! Sigue practicando!"
-    msj1 = "No pasa nada! Sigamos practicando!"
+elif RC == 3:
+        print (f"Tuviste {RC} preguntas correctas de 4!")
+        print (msj3)
 
-    if RC == 4:
-         print (f"Tuviste {RC} preguntas correctas de 4!")
-         print (msj4)
+elif RC == 2:
+        print (f"Tuviste {RC} preguntas correctas de 4!")
+        print (msj2)   
 
-    elif RC == 3:
-         print (f"Tuviste {RC} preguntas correctas de 4!")
-         print (msj3)
+elif RC == 1:
+        print (f"Tuviste {RC} preguntas correctas de 4!")
+        print (msj1)
 
-    elif RC == 2:
-         print (f"Tuviste {RC} preguntas correctas de 4!")
-         print (msj2)   
-
-    elif RC == 1:
-         print (f"Tuviste {RC} preguntas correctas de 4!")
-         print (msj1)
+elif RC == 0:
+        print(f"Tuviste {RC} preguntas correctas de 4")
+        print(msj0)
