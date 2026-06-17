@@ -28,12 +28,16 @@ sustCorrecto = random.choice(sustantivo)
 adjCorrecto = random.choice(adjetivo)
 verbCorrecto = random.choice(verbo)
 
+opciones = [sustCorrecto,adjCorrecto,verbCorrecto]
+random.shuffle(opciones)
+
 #Seccion de SUSTANTIVOS
 
-a = sustCorrecto
-b = adjCorrecto
-c = verbCorrecto
+a = opciones[0]
+b = opciones[1]
+c = opciones[2]
 
+respuesta_correcta = sustCorrecto
 intentoSus = 0
 RC = 0
 
@@ -41,15 +45,15 @@ print (f"""
 Un sustantivo es el nombre de algo, 
 puede ser persona, animal o cosa. Si:
 
-a = {sustCorrecto}
-b = {adjCorrecto}
-c = {verbCorrecto}
+a = {opciones[0]}
+b = {opciones[1]}
+c = {opciones[2]}
 """)
 sust = input("Cual es un sustantivo? ")
 
 
 
-while sust !=a and intentoSus < 2:
+while sust != respuesta_correcta and intentoSus < 2:
     intentoSus = intentoSus + 1
 
     print(f"""
@@ -60,13 +64,13 @@ while sust !=a and intentoSus < 2:
  Un sustantivo es el nombre de algo, 
  puede ser persona, animal o cosa. Si: 
 
- a = {sustCorrecto}
- b = {adjCorrecto}
- c = {verbCorrecto}
+a = {opciones[0]}
+b = {opciones[1]}
+c = {opciones[2]}
     """)
     sust = input("Cual es un sustantivo? ")
 
-if sust == a:
+if sust == respuesta_correcta:
     RC = RC + 1
     print(f"""
     Correcto! {sust} es un sustantivo!
@@ -91,24 +95,28 @@ sustCorrecto = random.choice(sustantivo)
 adjCorrecto = random.choice(adjetivo)
 verbCorrecto = random.choice(verbo)
 
-a = sustCorrecto
-b = adjCorrecto
-c = verbCorrecto
+opciones = [sustCorrecto,adjCorrecto,verbCorrecto]
+random.shuffle(opciones)
 
+a = opciones[0]
+b = opciones[1]
+c = opciones[2]
+
+respuesta_correcta = adjCorrecto
 intentoAdj = 0
 
 print (f"""Un adjetivo es una palabra que describe
 algo como, grande, frio, caliente. Si:
        
-a = {sustCorrecto}
-b = {adjCorrecto}
-c = {verbCorrecto}
+a = {opciones[0]}
+b = {opciones[1]}
+c = {opciones[2]}
 """)
 
 adj = input("Cual es un adjetivo? ")
 
 
-while adj !=b and intentoAdj < 2:
+while adj != respuesta_correcta and intentoAdj < 2:
     intentoAdj = intentoAdj + 1
     print(f"""
     Error! Intenta de nuevo!
@@ -118,13 +126,13 @@ while adj !=b and intentoAdj < 2:
  Un adjetivo es una palabra que describe 
  algo como, grande, frio, caliente. Si: 
 
- a = {sustCorrecto}
- b = {adjCorrecto}
- c = {verbCorrecto}
+a = {opciones[0]}
+b = {opciones[1]}
+c = {opciones[2]}
     """)
     adj = input("Cual es un adjetivo? ")
 
-if adj == b:
+if adj == respuesta_correcta:
     RC = RC + 1
     print(f"""
     Correcto! {adj} es un adjetivo!
@@ -149,23 +157,27 @@ sustCorrecto = random.choice(sustantivo)
 adjCorrecto = random.choice(adjetivo)
 verbCorrecto = random.choice(verbo)
 
-a = sustCorrecto
-b = adjCorrecto
-c = verbCorrecto
+opciones = [sustCorrecto,adjCorrecto,verbCorrecto]
+random.shuffle(opciones)
 
+a = opciones[0]
+b = opciones[1]
+c = opciones[2]
+
+respuesta_correcta = verbCorrecto
 intentoVerb = 0
 
 print (f"""Un verbo es una accion, es algo que alguien 
 hace como correr, cantar aprender, escribir. Si:
        
-a = {sustCorrecto}
-b = {adjCorrecto}
-c = {verbCorrecto}
+a = {opciones[0]}
+b = {opciones[1]}
+c = {opciones[2]}
 """)
 
 verb = input("Cual es un verbo? ")
 
-while verb !=c and intentoVerb < 2:
+while verb != respuesta_correcta and intentoVerb < 2:
     intentoVerb = intentoVerb + 1
     print(f"""
     Error! Intenta de nuevo!
@@ -175,14 +187,14 @@ while verb !=c and intentoVerb < 2:
  Un verbo es una accion, es algo que alguien 
  hace como correr, cantar aprender, escribir. Si:
 
-a = {sustCorrecto}
-b = {adjCorrecto}
-c = {verbCorrecto}
+a = {opciones[0]}
+b = {opciones[1]}
+c = {opciones[2]}
     """)
 
     verb = input("Cual es un verbo? ")
 
-if verb == c:
+if verb == respuesta_correcta:
     RC = RC + 1
     print(f"""
     Correcto! {verb} es un verbo!
@@ -200,27 +212,40 @@ else:
 #Se incorpora la triple comilla para parrafos
 #Pregunta extra de juego
 
-a = "1"
-b = "2"
 
-print("""
+mama = "Mama ama mas a Alice"
+alice = "Alice ama mas a Mama"
+papa = "Papa ama mas a Alice"
+bruno = "Bruno ama mas a Alice"
+
+
+opciones = [mama,alice,papa,bruno]
+random.shuffle(opciones)
+
+respuesta_correcta = mama
+
+print(f"""
 Hora de la pregunta mas importante! Si:
 
-1 = Mama ama mas a Alice
-2 = Alice ama mas a mama
+a = {opciones[0]}
+b = {opciones[1]}
+c = {opciones[2]}
+d = {opciones[3]}
 """)
-mas = input("Quien ama mas a quien? 1 o 2?")
+mas = input("Quien ama mas a quien?")
 
 
-while mas != a:
-     print("""
+while mas != respuesta_correcta:
+     print(f"""
      Incorrecto! Intentalo de nuevo! Si:
      
-1 = Mama ama mas a Alice
-2 = Alice ama mas a mama
+a = {opciones[0]}
+b = {opciones[1]}
+c = {opciones[2]}
+d = {opciones[3]}
     """)
 
-     mas = input("Quien ama mas a quien? 1 o 2?")
+     mas = input("Quien ama mas a quien? ")
 
 RC = RC + 1     
 print( f"""
