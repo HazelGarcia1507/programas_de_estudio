@@ -37,6 +37,7 @@ a = opciones[0]
 b = opciones[1]
 c = opciones[2]
 
+
 respuesta_correcta = sustCorrecto
 intentoSus = 0
 RC = 0
@@ -51,6 +52,15 @@ c = {opciones[2]}
 """)
 sust = input("Cual es un sustantivo? ")
 
+#Para convertir la letra en respuesta
+if sust == "a":
+    sust = opciones[0]
+
+elif sust == "b":
+    sust = opciones[1]
+
+elif sust == "c":
+    sust = opciones[2]
 
 
 while sust != respuesta_correcta and intentoSus < 2:
@@ -69,6 +79,16 @@ b = {opciones[1]}
 c = {opciones[2]}
     """)
     sust = input("Cual es un sustantivo? ")
+
+    #Para convertir la letra en respuesta
+    if sust == "a":
+        sust = opciones[0]
+
+    elif sust == "b":
+        sust = opciones[1]
+
+    elif sust == "c":
+        sust = opciones[2]
 
 if sust == respuesta_correcta:
     RC = RC + 1
@@ -115,6 +135,15 @@ c = {opciones[2]}
 
 adj = input("Cual es un adjetivo? ")
 
+#Para convertir la letra en respuesta
+if adj == "a":
+    adj = opciones[0]
+
+elif adj == "b":
+    adj = opciones[1]
+
+elif adj == "c":
+    adj = opciones[2]
 
 while adj != respuesta_correcta and intentoAdj < 2:
     intentoAdj = intentoAdj + 1
@@ -131,6 +160,16 @@ b = {opciones[1]}
 c = {opciones[2]}
     """)
     adj = input("Cual es un adjetivo? ")
+
+#Para convertir la letra en respuesta
+    if adj == "a":
+        adj = opciones[0]
+
+    elif adj == "b":
+        adj = opciones[1]
+
+    elif adj == "c":
+        adj = opciones[2]
 
 if adj == respuesta_correcta:
     RC = RC + 1
@@ -177,6 +216,16 @@ c = {opciones[2]}
 
 verb = input("Cual es un verbo? ")
 
+#Para convertir la letra en respuesta
+if verb == "a":
+    verb = opciones[0]
+
+elif verb == "b":
+    verb = opciones[1]
+
+elif verb == "c":
+    verb = opciones[2]
+
 while verb != respuesta_correcta and intentoVerb < 2:
     intentoVerb = intentoVerb + 1
     print(f"""
@@ -193,6 +242,18 @@ c = {opciones[2]}
     """)
 
     verb = input("Cual es un verbo? ")
+
+
+#Para convertir la letra en respuesta
+    if verb == "a":
+        verb = opciones[0]
+
+    elif verb == "b":
+        verb = opciones[1]
+
+    elif verb == "c":
+        verb = opciones[2]
+
 
 if verb == respuesta_correcta:
     RC = RC + 1
@@ -234,6 +295,19 @@ d = {opciones[3]}
 """)
 mas = input("Quien ama mas a quien?")
 
+#Para convertir la letra en respuesta
+if mas == "a":
+    mas = opciones[0]
+
+elif mas == "b":
+    mas = opciones[1]
+
+elif mas == "c":
+    mas = opciones[2]
+
+elif mas == "d":
+     mas = opciones [3]
+
 
 while mas != respuesta_correcta:
      print(f"""
@@ -246,6 +320,21 @@ d = {opciones[3]}
     """)
 
      mas = input("Quien ama mas a quien? ")
+
+
+    #Para convertir la letra en respuesta
+     if mas == "a":
+        mas = opciones[0]
+
+     elif mas == "b":
+        mas = opciones[1]
+
+     elif mas == "c":
+        mas = opciones[2]
+
+     elif mas == "d":
+        mas = opciones [3]
+
 
 RC = RC + 1     
 print( f"""
