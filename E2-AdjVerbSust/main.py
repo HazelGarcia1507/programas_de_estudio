@@ -52,6 +52,23 @@ c = {opciones[2]}
 """)
 sust = input("Cual es un sustantivo? ")
 
+
+#Para verificar que la entrada sea solo una letra
+
+while sust != "a" and sust != "b" and sust != "c":
+     print("Elije una letra que sea valida por favor")
+     print (f"""
+Un sustantivo es el nombre de algo, 
+puede ser persona, animal o cosa. Si:
+
+a = {opciones[0]}
+b = {opciones[1]}
+c = {opciones[2]}
+""")
+     sust = input("Cual es un sustantivo?")
+
+
+
 #Para convertir la letra en respuesta
 if sust == "a":
     sust = opciones[0]
@@ -61,6 +78,8 @@ elif sust == "b":
 
 elif sust == "c":
     sust = opciones[2]
+
+
 
 
 while sust != respuesta_correcta and intentoSus < 2:
@@ -79,6 +98,21 @@ b = {opciones[1]}
 c = {opciones[2]}
     """)
     sust = input("Cual es un sustantivo? ")
+
+
+    #Para verificar que la entrada sea solo una letra
+
+    while sust != "a" and sust != "b" and sust != "c":
+        print("Elije una letra que sea valida por favor")
+        print (f"""
+    Un sustantivo es el nombre de algo, 
+    puede ser persona, animal o cosa. Si:
+
+    a = {opciones[0]}
+    b = {opciones[1]}
+    c = {opciones[2]}
+    """)
+        sust = input("Cual es un sustantivo?")
 
     #Para convertir la letra en respuesta
     if sust == "a":
@@ -135,6 +169,23 @@ c = {opciones[2]}
 
 adj = input("Cual es un adjetivo? ")
 
+
+#Para verificar que la entrada sea solo una letra
+
+while adj != "a" and adj != "b" and adj != "c":
+     print("Elije una letra que sea valida por favor")
+     print (f"""
+Un adjetivo es una palabra que describe
+algo como, grande, frio, caliente. Si:
+
+a = {opciones[0]}
+b = {opciones[1]}
+c = {opciones[2]}
+""")
+     adj = input("Cual es un adjetivo?")
+
+
+
 #Para convertir la letra en respuesta
 if adj == "a":
     adj = opciones[0]
@@ -160,6 +211,22 @@ b = {opciones[1]}
 c = {opciones[2]}
     """)
     adj = input("Cual es un adjetivo? ")
+
+
+    #Para verificar que la entrada sea solo una letra
+
+    while adj != "a" and adj != "b" and adj != "c":
+        print("Elije una letra que sea valida por favor")
+        print (f"""
+    Un adjetivo es una palabra que describe
+    algo como, grande, frio, caliente. Si:
+
+    a = {opciones[0]}
+    b = {opciones[1]}
+    c = {opciones[2]}
+    """)
+        adj = input("Cual es un adjetivo?")
+
 
 #Para convertir la letra en respuesta
     if adj == "a":
@@ -216,6 +283,22 @@ c = {opciones[2]}
 
 verb = input("Cual es un verbo? ")
 
+
+#Para verificar que la entrada sea solo una letra
+
+while verb != "a" and verb != "b" and verb != "c":
+     print("Elije una letra que sea valida por favor")
+     print (f"""
+Un verbo es una accion, es algo que alguien 
+hace como correr, cantar aprender, escribir. Si:
+
+a = {opciones[0]}
+b = {opciones[1]}
+c = {opciones[2]}
+""")
+     verb = input("Cual es un verbo?")
+
+
 #Para convertir la letra en respuesta
 if verb == "a":
     verb = opciones[0]
@@ -242,6 +325,20 @@ c = {opciones[2]}
     """)
 
     verb = input("Cual es un verbo? ")
+
+    #Para verificar que la entrada sea solo una letra
+
+    while verb != "a" and verb != "b" and verb != "c":
+        print("Elije una letra que sea valida por favor")
+        print (f"""
+    Un verbo es una accion, es algo que alguien 
+    hace como correr, cantar aprender, escribir. Si:
+
+    a = {opciones[0]}
+    b = {opciones[1]}
+    c = {opciones[2]}
+    """)
+        verb = input("Cual es un verbo?")
 
 
 #Para convertir la letra en respuesta
@@ -295,6 +392,22 @@ d = {opciones[3]}
 """)
 mas = input("Quien ama mas a quien?")
 
+
+#Para verificar que la entrada sea solo una letra
+
+while mas != "a" and mas != "b" and mas != "c" and mas != "d":
+     print("Elije una letra que sea valida por favor")
+     print (f"""
+Por favor contesta la pregunta mas importante. Si:
+
+a = {opciones[0]}
+b = {opciones[1]}
+c = {opciones[2]}
+d = {opciones[3]}
+""")
+     mas = input("Quien ama mas a quien?")
+
+
 #Para convertir la letra en respuesta
 if mas == "a":
     mas = opciones[0]
@@ -320,6 +433,19 @@ d = {opciones[3]}
     """)
 
      mas = input("Quien ama mas a quien? ")
+
+
+     while mas != "a" and mas != "b" and mas != "c" and mas != "d":
+        print("Elije una letra que sea valida por favor")
+        print (f"""
+    Por favor contesta la pregunta mas importante. Si:
+
+    a = {opciones[0]}
+    b = {opciones[1]}
+    c = {opciones[2]}
+    d = {opciones[3]}
+    """)
+        mas = input("Quien ama mas a quien?")
 
 
     #Para convertir la letra en respuesta
