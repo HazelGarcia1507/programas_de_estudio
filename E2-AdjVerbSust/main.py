@@ -478,22 +478,29 @@ msj2 = "Vas mejorando! Muy bien! \nSigue practicando! \nSacaste 60!"
 msj1 = "No pasa nada!\nSigamos practicando!"
 msj0 = "Tranquila, volveremos a intentarlo!"
 
-if RC == 4:
+def evaluacion_final ():
+     print("Entre a la funcion")
+     if RC == 4:
         print (f"Tuviste {RC} preguntas correctas de 4!")
         print (msj4)
 
-elif RC == 3:
-        print (f"Tuviste {RC} preguntas correctas de 4!")
-        print (msj3)
 
-elif RC == 2:
-        print (f"Tuviste {RC} preguntas correctas de 4!")
-        print (msj2)   
+     elif RC == 3:
+            print (f"Tuviste {RC} preguntas correctas de 4!")
+            print (msj3)
 
-elif RC == 1:
-        print (f"Tuviste {RC} preguntas correctas de 4!")
-        print (msj1)
+     elif RC == 2:
+            print (f"Tuviste {RC} preguntas correctas de 4!")
+            print (msj2)   
 
-elif RC == 0:
-        print(f"Tuviste {RC} preguntas correctas de 4")
-        print(msj0)
+     elif RC == 1:
+            print (f"Tuviste {RC} preguntas correctas de 4!")
+            print (msj1)
+
+     elif RC == 0:
+            print(f"Tuviste {RC} preguntas correctas de 4")
+            print(msj0)
+
+
+
+evaluacion_final()
