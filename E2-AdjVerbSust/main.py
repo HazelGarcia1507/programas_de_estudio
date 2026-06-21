@@ -4,7 +4,7 @@
 #Se incorpora la triple comilla para parrafos
 
 #BIENVENIDA
-nombre = input("Como te llamas?")
+nombre = input("Como te llamas? ")
 
 print(f"""
 ¡Hola {nombre}!
@@ -30,6 +30,22 @@ verbCorrecto = random.choice(verbo)
 
 opciones = [sustCorrecto,adjCorrecto,verbCorrecto]
 random.shuffle(opciones)
+
+#SECCION DE FUNCIONES
+
+#Para convertir letra en respuesta
+def letra_respuesta(respuesta): 
+     if respuesta == "a":
+        respuesta = opciones[0]
+
+     elif respuesta == "b":
+        respuesta = opciones[1]
+
+     elif respuesta == "c":
+        respuesta = opciones[2]
+     return(respuesta)
+
+     
 
 #Seccion de SUSTANTIVOS
 
@@ -65,21 +81,11 @@ a = {opciones[0]}
 b = {opciones[1]}
 c = {opciones[2]}
 """)
-     sust = input("Cual es un sustantivo?")
-
+     sust = input("Cual es un sustantivo? ")
 
 
 #Para convertir la letra en respuesta
-if sust == "a":
-    sust = opciones[0]
-
-elif sust == "b":
-    sust = opciones[1]
-
-elif sust == "c":
-    sust = opciones[2]
-
-
+sust = letra_respuesta(sust)
 
 
 while sust != respuesta_correcta and intentoSus < 2:
@@ -114,15 +120,8 @@ c = {opciones[2]}
     """)
         sust = input("Cual es un sustantivo?")
 
-    #Para convertir la letra en respuesta
-    if sust == "a":
-        sust = opciones[0]
-
-    elif sust == "b":
-        sust = opciones[1]
-
-    elif sust == "c":
-        sust = opciones[2]
+        #Para convertir la letra en respuesta
+    sust = letra_respuesta(sust)
 
 if sust == respuesta_correcta:
     RC = RC + 1
@@ -141,7 +140,7 @@ else:
       """)
 
 
-#Se incorpora la triple comilla para parrafos
+
 #Seccion de ADJETIVOS
 
 
@@ -185,16 +184,9 @@ c = {opciones[2]}
      adj = input("Cual es un adjetivo?")
 
 
-
 #Para convertir la letra en respuesta
-if adj == "a":
-    adj = opciones[0]
+adj = letra_respuesta(adj)
 
-elif adj == "b":
-    adj = opciones[1]
-
-elif adj == "c":
-    adj = opciones[2]
 
 while adj != respuesta_correcta and intentoAdj < 2:
     intentoAdj = intentoAdj + 1
@@ -228,15 +220,8 @@ c = {opciones[2]}
         adj = input("Cual es un adjetivo?")
 
 
-#Para convertir la letra en respuesta
-    if adj == "a":
-        adj = opciones[0]
-
-    elif adj == "b":
-        adj = opciones[1]
-
-    elif adj == "c":
-        adj = opciones[2]
+    #Para convertir la letra en respuesta
+    adj = letra_respuesta(adj)
 
 if adj == respuesta_correcta:
     RC = RC + 1
@@ -255,8 +240,6 @@ else:
       """)
 
 
-
-#Se incorpora la triple comilla para parrafos
 #Seccion de VERBOS
 
 sustCorrecto = random.choice(sustantivo)
@@ -300,14 +283,8 @@ c = {opciones[2]}
 
 
 #Para convertir la letra en respuesta
-if verb == "a":
-    verb = opciones[0]
+verb = letra_respuesta(verb)
 
-elif verb == "b":
-    verb = opciones[1]
-
-elif verb == "c":
-    verb = opciones[2]
 
 while verb != respuesta_correcta and intentoVerb < 2:
     intentoVerb = intentoVerb + 1
@@ -341,15 +318,8 @@ c = {opciones[2]}
         verb = input("Cual es un verbo?")
 
 
-#Para convertir la letra en respuesta
-    if verb == "a":
-        verb = opciones[0]
-
-    elif verb == "b":
-        verb = opciones[1]
-
-    elif verb == "c":
-        verb = opciones[2]
+    #Para convertir la letra en respuesta
+    verb = letra_respuesta(verb)
 
 
 if verb == respuesta_correcta:
@@ -367,17 +337,16 @@ else:
       """)
 
 
-#Se incorpora la triple comilla para parrafos
+
 #Pregunta extra de juego
 
 
 mama = "Mama ama mas a Alice"
 alice = "Alice ama mas a Mama"
 papa = "Papa ama mas a Alice"
-bruno = "Bruno ama mas a Alice"
 
 
-opciones = [mama,alice,papa,bruno]
+opciones = [mama,alice,papa]
 random.shuffle(opciones)
 
 respuesta_correcta = mama
@@ -388,7 +357,6 @@ Hora de la pregunta mas importante! Si:
 a = {opciones[0]}
 b = {opciones[1]}
 c = {opciones[2]}
-d = {opciones[3]}
 """)
 mas = input("Quien ama mas a quien?")
 
@@ -403,23 +371,12 @@ Por favor contesta la pregunta mas importante. Si:
 a = {opciones[0]}
 b = {opciones[1]}
 c = {opciones[2]}
-d = {opciones[3]}
 """)
      mas = input("Quien ama mas a quien?")
 
 
 #Para convertir la letra en respuesta
-if mas == "a":
-    mas = opciones[0]
-
-elif mas == "b":
-    mas = opciones[1]
-
-elif mas == "c":
-    mas = opciones[2]
-
-elif mas == "d":
-     mas = opciones [3]
+mas = letra_respuesta(mas)
 
 
 while mas != respuesta_correcta:
@@ -429,7 +386,6 @@ while mas != respuesta_correcta:
 a = {opciones[0]}
 b = {opciones[1]}
 c = {opciones[2]}
-d = {opciones[3]}
     """)
 
      mas = input("Quien ama mas a quien? ")
@@ -443,23 +399,12 @@ d = {opciones[3]}
     a = {opciones[0]}
     b = {opciones[1]}
     c = {opciones[2]}
-    d = {opciones[3]}
     """)
         mas = input("Quien ama mas a quien?")
 
 
-    #Para convertir la letra en respuesta
-     if mas == "a":
-        mas = opciones[0]
-
-     elif mas == "b":
-        mas = opciones[1]
-
-     elif mas == "c":
-        mas = opciones[2]
-
-     elif mas == "d":
-        mas = opciones [3]
+     #Para convertir la letra en respuesta
+     mas = letra_respuesta(mas)
 
 
 RC = RC + 1     
@@ -467,7 +412,6 @@ print( f"""
     Correcto! Mama ama mas a Alice!
     Llevas {RC} puntos!
 """)
-
 
 
 #EVALUACION
@@ -483,7 +427,6 @@ def evaluacion_final ():
      if RC == 4:
         print (f"Tuviste {RC} preguntas correctas de 4!")
         print (msj4)
-
 
      elif RC == 3:
             print (f"Tuviste {RC} preguntas correctas de 4!")
