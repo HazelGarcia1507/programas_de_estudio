@@ -1,3 +1,6 @@
+######################################
+#EJEMPLO PARA USAR FUNCIONES
+
 numero = 5
 
 def duplicar(numero):
@@ -10,9 +13,35 @@ masa = duplicar(numero)
 
 print (masa)
 
+##################################
+#PARA DEVOLVER MAS DE UN VALOR EN LA FUNCION
+
+cantidad = 1
+
+def multiplicar(cantidad):
+    mano = cantidad * 2
+    pie = cantidad * 2
+    brazo = cantidad* 2
+    return(mano, pie, brazo)
+
+print (cantidad)
+
+mano,pie,brazo = multiplicar(cantidad)
+
+print (mano)
+print (pie)
+print(brazo)
+print (multiplicar(cantidad))
+
+#####
+#Se quitan estas letras porque no se usan, python ya sabe en que posicion estan y que existen esas opciones
+    #a = opciones[0]
+    #b = opciones[1]
+    #c = opciones[2]
 
 
 
+####################################         PROGRAMA     ############################
 
 #REPOSITORIOS
 
@@ -22,74 +51,96 @@ sustantivo = ["casa", "perro", "medico", "computadora", "mexico", "amor", "guita
 adjetivo = ["grande", "inteligente", "rapido", "azul", "antiguo", "amable", "roto", "brillante", "frio", "divertido"]
 verbo = ["correr", "cantar", "aprender", "escribir", "dormir", "construir", "pensar", "cocinar", "escuchar", "viajar" ]
 
-sustCorrecto = random.choice(sustantivo)
-adjCorrecto = random.choice(adjetivo)
-verbCorrecto = random.choice(verbo)
-
-opciones = [sustCorrecto,adjCorrecto,verbCorrecto]
-random.shuffle(opciones)
-
-
 
 #SECCION DE FUNCIONES
 
+#Opciones random barajadas (ORB) = cada respuesta elegida al azar se muestra en diferente orden
+def ORB():
+    sustCorrecto = random.choice(sustantivo)
+    adjCorrecto = random.choice(adjetivo)
+    verbCorrecto = random.choice(verbo)
+
+    opciones = [sustCorrecto,adjCorrecto,verbCorrecto]
+    random.shuffle(opciones)
+
+    return(sustCorrecto,adjCorrecto,verbCorrecto,opciones)
+#regreso opciones como lista para imprimirla y cada valor por si solo para poder utilizar solo verbCorrecto en la seccion de verbos, etc
+
+
+#Para hacer generico el siguiente while y poder imprimirlo se añade:
+sust = """Un sustantivo es el nombre de algo, 
+ puede ser persona, animal o cosa. Si:"""
+sustP = "Cual es un sustantivo? "
+sus = "Sustantivo "
+
 #Para convertir letra en respuesta
-def letra_respuesta(respuesta): 
-     if respuesta == "a":
-        respuesta = opciones[0]
+def letra_respuesta(entrada, opciones): 
+     if entrada == "a":
+        entrada = opciones[0]
 
-     elif respuesta == "b":
-        respuesta = opciones[1]
+     elif entrada == "b":
+        entrada = opciones[1]
 
-     elif respuesta == "c":
-        respuesta = opciones[2]
-     return(respuesta)
+     elif entrada == "c":
+        entrada = opciones[2]
+     return(entrada)
+
+
+
+#Para verificar que la entrada sea solo una letra
+#COABC
+
+def choose_only_abc(entrada):
+    while entrada != "a" and entrada != "b" and entrada != "c":
+        print("Elije una letra que sea valida por favor")
+        print (f"""
+    {sust}
+
+    a = {opciones[0]}
+    b = {opciones[1]}
+    c = {opciones[2]}
+    """)
+        entrada = input("Cual es un sustantivo? ")
+    return(entrada)
+
 
 
 
 
 #Seccion de SUSTANTIVOS
 
-a = opciones[0]
-b = opciones[1]
-c = opciones[2]
+#Para tener guardada las opciones que ya me dio ORB uso:
+sustCorrecto, adjCorrecto, verbCorrecto, opciones = ORB()
 
-
-respuesta_correcta = sustCorrecto
+#solo contadores
 intentoSus = 0
 RC = 0
 
+
+
 print (f"""
-Un sustantivo es el nombre de algo, 
-puede ser persona, animal o cosa. Si:
+{sust}
 
 a = {opciones[0]}
 b = {opciones[1]}
 c = {opciones[2]}
 """)
-sust = input("Cual es un sustantivo? ")
+# Como se generaliza se cambia sust por entrada
+entrada = input("Cual es un sustantivo? ")
 
 
-#Para verificar que la entrada sea solo una letra
-
-while sust != "a" and sust != "b" and sust != "c":
-     print("Elije una letra que sea valida por favor")
-     print (f"""
-Un sustantivo es el nombre de algo, 
-puede ser persona, animal o cosa. Si:
-
-a = {opciones[0]}
-b = {opciones[1]}
-c = {opciones[2]}
-""")
-     sust = input("Cual es un sustantivo? ")
-
+#Para verificar que la entrada sea solo una letra -COABC
+entrada = choose_only_abc(entrada)
 
 #Para convertir la letra en respuesta
-sust = letra_respuesta(sust)
+entrada = letra_respuesta(entrada,opciones)
+
+#Lo que ya me dio COABC lo integro en la siguiente linea:
+respuesta_correcta = sustCorrecto
 
 
-while sust != respuesta_correcta and intentoSus < 2:
+
+while entrada != respuesta_correcta and intentoSus < 2:
     intentoSus = intentoSus + 1
 
     print(f"""
@@ -97,37 +148,25 @@ while sust != respuesta_correcta and intentoSus < 2:
     
     Llevas {intentoSus} intentos
     
- Un sustantivo es el nombre de algo, 
- puede ser persona, animal o cosa. Si: 
+    {sust}
 
 a = {opciones[0]}
 b = {opciones[1]}
 c = {opciones[2]}
     """)
-    sust = input("Cual es un sustantivo? ")
+    entrada = input(sustP)
 
 
     #Para verificar que la entrada sea solo una letra
+    entrada = choose_only_abc(entrada)
 
-    while sust != "a" and sust != "b" and sust != "c":
-        print("Elije una letra que sea valida por favor")
-        print (f"""
-    Un sustantivo es el nombre de algo, 
-    puede ser persona, animal o cosa. Si:
+    #Para convertir la letra en respuesta
+    entrada = letra_respuesta(entrada,opciones)
 
-    a = {opciones[0]}
-    b = {opciones[1]}
-    c = {opciones[2]}
-    """)
-        sust = input("Cual es un sustantivo?")
-
-        #Para convertir la letra en respuesta
-    sust = letra_respuesta(sust)
-
-if sust == respuesta_correcta:
+if entrada == respuesta_correcta:
     RC = RC + 1
     print(f"""
-    Correcto! {sust} es un sustantivo!
+    Correcto! {entrada} es un {sus}!
     
     Llevas {RC} punto!
     """)
