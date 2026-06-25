@@ -66,6 +66,7 @@ def ORB():
     return(sustCorrecto,adjCorrecto,verbCorrecto,opciones)
 #regreso opciones como lista para imprimirla y cada valor por si solo para poder utilizar solo verbCorrecto en la seccion de verbos, etc
 
+sustCorrecto, adjCorrecto, verbCorrecto, opciones = ORB()
 
 #Para hacer generico el siguiente while y poder imprimirlo se añade:
 sust = """Un sustantivo es el nombre de algo, 
@@ -87,22 +88,31 @@ def letra_respuesta(entrada, opciones):
 
 
 
-#Para verificar que la entrada sea solo una letra
-#COABC
+def pregunta_categoria_gramatical ():
+    IsustP = "Cual es un sustantivo? "
+    IadjP = "Cual es un adjetivo? "
+    IverbP = "Cual es un verbo? "
+    Qvalid_letter = "Elije una letra que sea valida por favor"
+    
+    return (IsustP, IadjP, IverbP, Qvalid_letter)
 
-def choose_only_abc(entrada):
+IsustP, IadjP, IverbP, Qvalid_letter = pregunta_categoria_gramatical()
+
+
+
+def choose_only_abc(entrada,IsustP):
     while entrada != "a" and entrada != "b" and entrada != "c":
-        print("Elije una letra que sea valida por favor")
+        print(Qvalid_letter)
         print (f"""
-    {sust}
+{sust}
 
-    a = {opciones[0]}
-    b = {opciones[1]}
-    c = {opciones[2]}
-    """)
-        entrada = input("Cual es un sustantivo? ")
+a = {opciones[0]}
+b = {opciones[1]}
+c = {opciones[2]}
+""")
+   
+        entrada = input (IsustP)
     return(entrada)
-
 
 
 
@@ -130,7 +140,7 @@ entrada = input("Cual es un sustantivo? ")
 
 
 #Para verificar que la entrada sea solo una letra -COABC
-entrada = choose_only_abc(entrada)
+entrada = choose_only_abc(entrada, IsustP)
 
 #Para convertir la letra en respuesta
 entrada = letra_respuesta(entrada,opciones)
@@ -158,7 +168,7 @@ c = {opciones[2]}
 
 
     #Para verificar que la entrada sea solo una letra
-    entrada = choose_only_abc(entrada)
+    entrada = choose_only_abc(entrada,IsustP)
 
     #Para convertir la letra en respuesta
     entrada = letra_respuesta(entrada,opciones)
