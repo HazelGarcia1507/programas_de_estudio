@@ -1,8 +1,5 @@
 #Creacion de programa para memorizar que es un Sustantivo, un verbo y un adjetivo
 
-#Inicio del programa
-#Se incorpora la triple comilla para parrafos
-
 #BIENVENIDA
 nombre = input("Como te llamas? ")
 
@@ -14,7 +11,7 @@ Vamos a practicar sustantivos, adjetivos y verbos.
 ¡Diviértete!
 """)
 
-
+####################################         PROGRAMA     ############################
 
 #REPOSITORIOS
 
@@ -24,109 +21,134 @@ sustantivo = ["casa", "perro", "medico", "computadora", "mexico", "amor", "guita
 adjetivo = ["grande", "inteligente", "rapido", "azul", "antiguo", "amable", "roto", "brillante", "frio", "divertido"]
 verbo = ["correr", "cantar", "aprender", "escribir", "dormir", "construir", "pensar", "cocinar", "escuchar", "viajar" ]
 
-sustCorrecto = random.choice(sustantivo)
-adjCorrecto = random.choice(adjetivo)
-verbCorrecto = random.choice(verbo)
+#################          SECCION DE VARIABLES
+#Para hacer generico el siguiente while y poder imprimirlo se añade:
+sust_descripcion = """Un sustantivo es el nombre de algo, 
+ puede ser persona, animal o cosa. Si:"""
+sust_palabra = "Sustantivo "
+adj_descripcion = """Un adjetivo es una palabra que describe
+algo como, grande, frio, caliente. Si: """
+adj_palabra = "Adjetivo "
+verb_descripcion = """Un verbo es una accion, es algo que alguien 
+    hace como correr, cantar aprender, escribir. Si: """
+verb_palabra = "Verbo "
 
-opciones = [sustCorrecto,adjCorrecto,verbCorrecto]
-random.shuffle(opciones)
+##################           SECCION DE FUNCIONES
 
-#SECCION DE FUNCIONES
+#Opciones random barajadas (ORB) = cada respuesta elegida al azar se muestra en diferente orden
+def ORB():
+    sustCorrecto = random.choice(sustantivo)
+    adjCorrecto = random.choice(adjetivo)
+    verbCorrecto = random.choice(verbo)
+
+    opciones = [sustCorrecto,adjCorrecto,verbCorrecto]
+    random.shuffle(opciones)
+
+    return(sustCorrecto,adjCorrecto,verbCorrecto,opciones)
+#regreso opciones como lista para imprimirla y cada valor por si solo para poder utilizar solo verbCorrecto en la seccion de verbos, etc
+
+sustCorrecto, adjCorrecto, verbCorrecto, opciones = ORB()
+
+
 
 #Para convertir letra en respuesta
-def letra_respuesta(respuesta): 
-     if respuesta == "a":
-        respuesta = opciones[0]
+def letra_respuesta(entrada, opciones): 
+     if entrada == "a":
+        entrada = opciones[0]
 
-     elif respuesta == "b":
-        respuesta = opciones[1]
+     elif entrada == "b":
+        entrada = opciones[1]
 
-     elif respuesta == "c":
-        respuesta = opciones[2]
-     return(respuesta)
-
-     
-
-#Seccion de SUSTANTIVOS
-
-a = opciones[0]
-b = opciones[1]
-c = opciones[2]
+     elif entrada == "c":
+        entrada = opciones[2]
+     return(entrada)
 
 
+#Para generalizar funcion choose only
+def textos_categoria_gramatical ():
+    IsustP = "Cual es un sustantivo? "
+    IadjP = "Cual es un adjetivo? "
+    IverbP = "Cual es un verbo? "
+    Qvalid_letter = "Elije una letra que sea valida por favor"
+    
+    return (IsustP, IadjP, IverbP, Qvalid_letter)
+
+IsustP, IadjP, IverbP, Qvalid_letter = textos_categoria_gramatical()
+
+
+#Para que el usuario solo pueda dar una letra valida: a,b o c
+def choose_only_abc(entrada,gramatica, desc_categoria):
+    while entrada != "a" and entrada != "b" and entrada != "c":
+        print(Qvalid_letter)
+        print (f"""
+{desc_categoria}
+
+a = {opciones[0]}
+b = {opciones[1]}
+c = {opciones[2]}
+""")
+   
+        entrada = input (gramatica)
+    return(entrada)
+
+#NOTA: Se pone gramatica como nombre para saber que ahi puedo utilizar verbos, adjetivos y sustantivos segun corresponda y asi dejar general la funcion. (No se movio en lab 02 y 03 porque solo era una palabra para hacer commit)
+
+
+####################### INICIA PROGRAMA SECCION DE SUSTANTIVOS #########################
+
+#Lo que ya me dio COABC lo integro en la siguiente linea:
 respuesta_correcta = sustCorrecto
+
+#solo contadores
 intentoSus = 0
 RC = 0
 
+
 print (f"""
-Un sustantivo es el nombre de algo, 
-puede ser persona, animal o cosa. Si:
+{sust_descripcion}
 
 a = {opciones[0]}
 b = {opciones[1]}
 c = {opciones[2]}
 """)
-sust = input("Cual es un sustantivo? ")
+# Como se generaliza se cambia sust por entrada
+entrada = input(IsustP)
 
 
-#Para verificar que la entrada sea solo una letra
-
-while sust != "a" and sust != "b" and sust != "c":
-     print("Elije una letra que sea valida por favor")
-     print (f"""
-Un sustantivo es el nombre de algo, 
-puede ser persona, animal o cosa. Si:
-
-a = {opciones[0]}
-b = {opciones[1]}
-c = {opciones[2]}
-""")
-     sust = input("Cual es un sustantivo? ")
-
+#Para verificar que la entrada sea solo una letra -COABC
+entrada = choose_only_abc(entrada, IsustP, sust_descripcion)
 
 #Para convertir la letra en respuesta
-sust = letra_respuesta(sust)
+entrada = letra_respuesta(entrada,opciones)
 
 
-while sust != respuesta_correcta and intentoSus < 2:
+while entrada != respuesta_correcta and intentoSus < 2:
     intentoSus = intentoSus + 1
 
     print(f"""
     Error! Intenta de nuevo!
     
     Llevas {intentoSus} intentos
-    
- Un sustantivo es el nombre de algo, 
- puede ser persona, animal o cosa. Si: 
+     
+ {sust_descripcion}
 
 a = {opciones[0]}
 b = {opciones[1]}
 c = {opciones[2]}
     """)
-    sust = input("Cual es un sustantivo? ")
+    entrada = input(IsustP)
 
 
     #Para verificar que la entrada sea solo una letra
+    entrada = choose_only_abc(entrada,IsustP, sust_descripcion)
 
-    while sust != "a" and sust != "b" and sust != "c":
-        print("Elije una letra que sea valida por favor")
-        print (f"""
-    Un sustantivo es el nombre de algo, 
-    puede ser persona, animal o cosa. Si:
+    #Para convertir la letra en respuesta
+    entrada = letra_respuesta(entrada,opciones)
 
-    a = {opciones[0]}
-    b = {opciones[1]}
-    c = {opciones[2]}
-    """)
-        sust = input("Cual es un sustantivo?")
-
-        #Para convertir la letra en respuesta
-    sust = letra_respuesta(sust)
-
-if sust == respuesta_correcta:
+if entrada == respuesta_correcta:
     RC = RC + 1
     print(f"""
-    Correcto! {sust} es un sustantivo!
+    Correcto! {entrada} es un {sust_palabra}!
     
     Llevas {RC} punto!
     """)
@@ -140,93 +162,63 @@ else:
       """)
 
 
+###################                   SECCION DE ADJETIVOS              ######################
 
-#Seccion de ADJETIVOS
+#Paraa que tenga nuevas palabras:
+sustCorrecto, adjCorrecto, verbCorrecto, opciones = ORB()
 
-
-sustCorrecto = random.choice(sustantivo)
-adjCorrecto = random.choice(adjetivo)
-verbCorrecto = random.choice(verbo)
-
-opciones = [sustCorrecto,adjCorrecto,verbCorrecto]
-random.shuffle(opciones)
-
-a = opciones[0]
-b = opciones[1]
-c = opciones[2]
-
+#En la siguiente linea integro lo que me dio COABC
 respuesta_correcta = adjCorrecto
+
+#Contadores
 intentoAdj = 0
 
-print (f"""Un adjetivo es una palabra que describe
-algo como, grande, frio, caliente. Si:
+print (f"""
+{adj_descripcion}
        
 a = {opciones[0]}
 b = {opciones[1]}
 c = {opciones[2]}
 """)
 
-adj = input("Cual es un adjetivo? ")
+entrada  = input(IadjP)
 
 
 #Para verificar que la entrada sea solo una letra
-
-while adj != "a" and adj != "b" and adj != "c":
-     print("Elije una letra que sea valida por favor")
-     print (f"""
-Un adjetivo es una palabra que describe
-algo como, grande, frio, caliente. Si:
-
-a = {opciones[0]}
-b = {opciones[1]}
-c = {opciones[2]}
-""")
-     adj = input("Cual es un adjetivo?")
+entrada = choose_only_abc(entrada,IadjP, adj_descripcion)
 
 
 #Para convertir la letra en respuesta
-adj = letra_respuesta(adj)
+entrada = letra_respuesta(entrada,opciones)
 
 
-while adj != respuesta_correcta and intentoAdj < 2:
+while entrada != respuesta_correcta and intentoAdj < 2:
     intentoAdj = intentoAdj + 1
     print(f"""
     Error! Intenta de nuevo!
     
     Llevas {intentoAdj} intentos
     
- Un adjetivo es una palabra que describe 
- algo como, grande, frio, caliente. Si: 
+ {adj_descripcion}
 
 a = {opciones[0]}
 b = {opciones[1]}
 c = {opciones[2]}
     """)
-    adj = input("Cual es un adjetivo? ")
+    entrada = input(IadjP)
 
 
     #Para verificar que la entrada sea solo una letra
-
-    while adj != "a" and adj != "b" and adj != "c":
-        print("Elije una letra que sea valida por favor")
-        print (f"""
-    Un adjetivo es una palabra que describe
-    algo como, grande, frio, caliente. Si:
-
-    a = {opciones[0]}
-    b = {opciones[1]}
-    c = {opciones[2]}
-    """)
-        adj = input("Cual es un adjetivo?")
-
+    entrada = choose_only_abc(entrada,IadjP, adj_descripcion)
+    
 
     #Para convertir la letra en respuesta
-    adj = letra_respuesta(adj)
+    entrada = letra_respuesta(entrada,opciones)
 
-if adj == respuesta_correcta:
+if entrada == respuesta_correcta:
     RC = RC + 1
     print(f"""
-    Correcto! {adj} es un adjetivo!
+    Correcto! {entrada} es un {adj_palabra}!
     
     Llevas {RC} puntos!
     """)
@@ -240,92 +232,63 @@ else:
       """)
 
 
-#Seccion de VERBOS
+#########################                 SECCION DE VERBOS             ####################
 
-sustCorrecto = random.choice(sustantivo)
-adjCorrecto = random.choice(adjetivo)
-verbCorrecto = random.choice(verbo)
+#Paraa que tenga nuevas palabras:
+sustCorrecto, adjCorrecto, verbCorrecto, opciones = ORB()
 
-opciones = [sustCorrecto,adjCorrecto,verbCorrecto]
-random.shuffle(opciones)
-
-a = opciones[0]
-b = opciones[1]
-c = opciones[2]
-
+#En la siguiente linea integro lo que me dio COABC
 respuesta_correcta = verbCorrecto
+
+#Contadores
 intentoVerb = 0
 
-print (f"""Un verbo es una accion, es algo que alguien 
-hace como correr, cantar aprender, escribir. Si:
+
+print (f"""
+{verb_descripcion}
        
 a = {opciones[0]}
 b = {opciones[1]}
 c = {opciones[2]}
 """)
 
-verb = input("Cual es un verbo? ")
+entrada = input(IverbP)
 
 
 #Para verificar que la entrada sea solo una letra
-
-while verb != "a" and verb != "b" and verb != "c":
-     print("Elije una letra que sea valida por favor")
-     print (f"""
-Un verbo es una accion, es algo que alguien 
-hace como correr, cantar aprender, escribir. Si:
-
-a = {opciones[0]}
-b = {opciones[1]}
-c = {opciones[2]}
-""")
-     verb = input("Cual es un verbo?")
-
+entrada = choose_only_abc(entrada, IverbP, verb_descripcion)
 
 #Para convertir la letra en respuesta
-verb = letra_respuesta(verb)
+entrada = letra_respuesta(entrada,opciones)
 
 
-while verb != respuesta_correcta and intentoVerb < 2:
+while entrada != respuesta_correcta and intentoVerb < 2:
     intentoVerb = intentoVerb + 1
     print(f"""
     Error! Intenta de nuevo!
     
     Llevas {intentoVerb} intentos
     
- Un verbo es una accion, es algo que alguien 
- hace como correr, cantar aprender, escribir. Si:
+{verb_descripcion}
 
 a = {opciones[0]}
 b = {opciones[1]}
 c = {opciones[2]}
     """)
 
-    verb = input("Cual es un verbo? ")
+    entrada = input(IverbP)
 
     #Para verificar que la entrada sea solo una letra
-
-    while verb != "a" and verb != "b" and verb != "c":
-        print("Elije una letra que sea valida por favor")
-        print (f"""
-    Un verbo es una accion, es algo que alguien 
-    hace como correr, cantar aprender, escribir. Si:
-
-    a = {opciones[0]}
-    b = {opciones[1]}
-    c = {opciones[2]}
-    """)
-        verb = input("Cual es un verbo?")
-
+    entrada = choose_only_abc (entrada, IverbP, verb_descripcion)
 
     #Para convertir la letra en respuesta
-    verb = letra_respuesta(verb)
+    entrada = letra_respuesta(entrada, opciones)
 
 
-if verb == respuesta_correcta:
+if entrada == respuesta_correcta:
     RC = RC + 1
     print(f"""
-    Correcto! {verb} es un verbo!
+    Correcto! {entrada} es un {verb_palabra}!
     Llevas {RC} puntos!
     """)
 else:
@@ -337,7 +300,6 @@ else:
       """)
 
 
-
 #Pregunta extra de juego
 
 
@@ -346,17 +308,17 @@ alice = "Alice ama mas a Mama"
 papa = "Papa ama mas a Alice"
 
 
-opciones = [mama,alice,papa]
-random.shuffle(opciones)
+elige = [mama,alice,papa]
+random.shuffle(elige)
 
 respuesta_correcta = mama
 
 print(f"""
 Hora de la pregunta mas importante! Si:
 
-a = {opciones[0]}
-b = {opciones[1]}
-c = {opciones[2]}
+a = {elige[0]}
+b = {elige[1]}
+c = {elige[2]}
 """)
 mas = input("Quien ama mas a quien?")
 
@@ -368,24 +330,24 @@ while mas != "a" and mas != "b" and mas != "c" and mas != "d":
      print (f"""
 Por favor contesta la pregunta mas importante. Si:
 
-a = {opciones[0]}
-b = {opciones[1]}
-c = {opciones[2]}
+a = {elige[0]}
+b = {elige[1]}
+c = {elige[2]}
 """)
      mas = input("Quien ama mas a quien?")
 
 
 #Para convertir la letra en respuesta
-mas = letra_respuesta(mas)
+mas = letra_respuesta(mas, elige)
 
 
 while mas != respuesta_correcta:
      print(f"""
      Incorrecto! Intentalo de nuevo! Si:
      
-a = {opciones[0]}
-b = {opciones[1]}
-c = {opciones[2]}
+a = {elige[0]}
+b = {elige[1]}
+c = {elige[2]}
     """)
 
      mas = input("Quien ama mas a quien? ")
@@ -396,15 +358,15 @@ c = {opciones[2]}
         print (f"""
     Por favor contesta la pregunta mas importante. Si:
 
-    a = {opciones[0]}
-    b = {opciones[1]}
-    c = {opciones[2]}
+    a = {elige[0]}
+    b = {elige[1]}
+    c = {elige[2]}
     """)
         mas = input("Quien ama mas a quien?")
 
 
      #Para convertir la letra en respuesta
-     mas = letra_respuesta(mas)
+     mas = letra_respuesta(mas, elige)
 
 
 RC = RC + 1     
