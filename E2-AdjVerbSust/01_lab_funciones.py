@@ -51,6 +51,14 @@ sustantivo = ["casa", "perro", "medico", "computadora", "mexico", "amor", "guita
 adjetivo = ["grande", "inteligente", "rapido", "azul", "antiguo", "amable", "roto", "brillante", "frio", "divertido"]
 verbo = ["correr", "cantar", "aprender", "escribir", "dormir", "construir", "pensar", "cocinar", "escuchar", "viajar" ]
 
+#SECCION DE VARIABLES
+#Para hacer generico el siguiente while y poder imprimirlo se añade:
+sust_descripcion = """Un sustantivo es el nombre de algo, 
+ puede ser persona, animal o cosa. Si:"""
+sust_palabra = "Sustantivo "
+adj_descripcion = """Un adjetivo es una palabra que describe
+algo como, grande, frio, caliente. Si: """
+adj_palabra = "Adjetivo"
 
 #SECCION DE FUNCIONES
 
@@ -68,11 +76,7 @@ def ORB():
 
 sustCorrecto, adjCorrecto, verbCorrecto, opciones = ORB()
 
-#Para hacer generico el siguiente while y poder imprimirlo se añade:
-sust = """Un sustantivo es el nombre de algo, 
- puede ser persona, animal o cosa. Si:"""
-sustP = "Cual es un sustantivo? "
-sus = "Sustantivo "
+
 
 #Para convertir letra en respuesta
 def letra_respuesta(entrada, opciones): 
@@ -87,7 +91,7 @@ def letra_respuesta(entrada, opciones):
      return(entrada)
 
 
-
+#Para generalizar funcion choose only
 def pregunta_categoria_gramatical ():
     IsustP = "Cual es un sustantivo? "
     IadjP = "Cual es un adjetivo? "
@@ -99,12 +103,12 @@ def pregunta_categoria_gramatical ():
 IsustP, IadjP, IverbP, Qvalid_letter = pregunta_categoria_gramatical()
 
 
-
+#Para que el usuario solo pueda dar una letra valida: a,b o c
 def choose_only_abc(entrada,IsustP):
     while entrada != "a" and entrada != "b" and entrada != "c":
         print(Qvalid_letter)
         print (f"""
-{sust}
+{sust_descripcion}
 
 a = {opciones[0]}
 b = {opciones[1]}
@@ -119,24 +123,23 @@ c = {opciones[2]}
 
 #Seccion de SUSTANTIVOS
 
-#Para tener guardada las opciones que ya me dio ORB uso:
-sustCorrecto, adjCorrecto, verbCorrecto, opciones = ORB()
+#Lo que ya me dio COABC lo integro en la siguiente linea:
+respuesta_correcta = sustCorrecto
 
 #solo contadores
 intentoSus = 0
 RC = 0
 
 
-
 print (f"""
-{sust}
+{sust_descripcion}
 
 a = {opciones[0]}
 b = {opciones[1]}
 c = {opciones[2]}
 """)
 # Como se generaliza se cambia sust por entrada
-entrada = input("Cual es un sustantivo? ")
+entrada = input(IsustP)
 
 
 #Para verificar que la entrada sea solo una letra -COABC
@@ -144,10 +147,6 @@ entrada = choose_only_abc(entrada, IsustP)
 
 #Para convertir la letra en respuesta
 entrada = letra_respuesta(entrada,opciones)
-
-#Lo que ya me dio COABC lo integro en la siguiente linea:
-respuesta_correcta = sustCorrecto
-
 
 
 while entrada != respuesta_correcta and intentoSus < 2:
@@ -157,14 +156,14 @@ while entrada != respuesta_correcta and intentoSus < 2:
     Error! Intenta de nuevo!
     
     Llevas {intentoSus} intentos
-    
-    {sust}
+     
+ {sust_descripcion}
 
 a = {opciones[0]}
 b = {opciones[1]}
 c = {opciones[2]}
     """)
-    entrada = input(sustP)
+    entrada = input(IsustP)
 
 
     #Para verificar que la entrada sea solo una letra
@@ -176,7 +175,7 @@ c = {opciones[2]}
 if entrada == respuesta_correcta:
     RC = RC + 1
     print(f"""
-    Correcto! {entrada} es un {sus}!
+    Correcto! {entrada} es un {sust_palabra}!
     
     Llevas {RC} punto!
     """)
@@ -190,3 +189,68 @@ else:
       """)
 
 
+#Seccion de ADJETIVOS
+
+#En la siguiente linea integro lo que me dio COABC
+respuesta_correcta = adjCorrecto
+
+#Contadores
+intentoAdj = 0
+
+print (f"""
+{adj_descripcion}
+       
+a = {opciones[0]}
+b = {opciones[1]}
+c = {opciones[2]}
+""")
+
+entrada  = input(IadjP)
+
+
+#Para verificar que la entrada sea solo una letra
+entrada = choose_only_abc(entrada,IadjP)
+
+
+#Para convertir la letra en respuesta
+entrada = letra_respuesta(entrada,opciones)
+
+
+while entrada != respuesta_correcta and intentoAdj < 2:
+    intentoAdj = intentoAdj + 1
+    print(f"""
+    Error! Intenta de nuevo!
+    
+    Llevas {intentoAdj} intentos
+    
+ {adj_descripcion}
+
+a = {opciones[0]}
+b = {opciones[1]}
+c = {opciones[2]}
+    """)
+    entrada = input(IadjP)
+
+
+    #Para verificar que la entrada sea solo una letra
+    entrada = choose_only_abc(entrada,IadjP)
+    
+
+    #Para convertir la letra en respuesta
+    entrada = letra_respuesta(entrada,opciones)
+
+if entrada == respuesta_correcta:
+    RC = RC + 1
+    print(f"""
+    Correcto! {entrada} es un {adj_palabra}!
+    
+    Llevas {RC} puntos!
+    """)
+
+else:
+      intentoAdj = intentoAdj + 1
+      print(f"""
+      Llevas {intentoAdj} intentos
+      
+      Lo siento! te quedaste sin intentos!
+      """)
