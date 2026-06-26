@@ -1,68 +1,137 @@
 ### PARA HACER GENERICA UNA FUNCION  #############
+#Seccion de ADJETIVOS
 
-###GUIA###
-#Para verificar que la entrada sea solo una letra
+import random
 
-while verb != "a" and verb != "b" and verb != "c":
-     print("Elije una letra que sea valida por favor")
-     print (f"""
-Un verbo es una accion, es algo que alguien 
-hace como correr, cantar aprender, escribir. Si:
+sustantivo = ["casa", "perro", "medico", "computadora", "mexico", "amor", "guitarra", "parque", "felicidad", "estudiante" ]
+adjetivo = ["grande", "inteligente", "rapido", "azul", "antiguo", "amable", "roto", "brillante", "frio", "divertido"]
+verbo = ["correr", "cantar", "aprender", "escribir", "dormir", "construir", "pensar", "cocinar", "escuchar", "viajar" ]
+
+
+### SECCION DE VARIABLES
+adj_descripcion = """Un adjetivo es una palabra que describe
+algo como, grande, frio, caliente. Si: """
+adj_palabra = "Adjetivo"
+
+
+### SECCION DE FUNCIONES###
+
+#Para funcion que da un orden aleatorio de respuestas barajadas
+def ORB():
+    sustCorrecto = random.choice(sustantivo)
+    adjCorrecto = random.choice(adjetivo)
+    verbCorrecto = random.choice(verbo)
+
+    opciones = [sustCorrecto,adjCorrecto,verbCorrecto]
+    random.shuffle(opciones)
+    return (sustCorrecto,adjCorrecto,verbCorrecto, opciones)
+
+sustCorrecto,adjCorrecto,verbCorrecto, opciones = ORB()
+
+
+
+#Para convertir letra en respuesta
+def letra_respuesta(entrada, opciones): 
+     if entrada == "a":
+        entrada = opciones[0]
+
+     elif entrada == "b":
+        entrada = opciones[1]
+
+     elif entrada == "c":
+        entrada = opciones[2]
+     return(entrada)
+ 
+
+
+#Para generalizar funcion choose only
+def pregunta_categoria_gramatical ():
+    IsustP = "Cual es un sustantivo? "
+    IadjP = "Cual es un adjetivo? "
+    IverbP = "Cual es un verbo? "
+    Qvalid_letter = "Elije una letra que sea valida por favor"
+    
+    return (IsustP, IadjP, IverbP, Qvalid_letter)
+
+IsustP, IadjP, IverbP, Qvalid_letter = pregunta_categoria_gramatical()
+
+
+#Para que el usuario solo pueda dar una letra valida: a,b o c
+def choose_only_abc(entrada,IadjP):
+    while entrada != "a" and entrada != "b" and entrada != "c":
+        print(Qvalid_letter)
+        print (f"""
+{adj_descripcion}
 
 a = {opciones[0]}
 b = {opciones[1]}
 c = {opciones[2]}
 """)
-     verb = input("Cual es un verbo?")
+   
+        entrada = input (IadjP)
+    return(entrada)
 
+#En la siguiente linea integro lo que me dio COABC
+respuesta_correcta = adjCorrecto
+
+#Contadores
+intentoAdj = 0
+RC = 0
+
+print (f"""
+{adj_descripcion}
+       
+a = {opciones[0]}
+b = {opciones[1]}
+c = {opciones[2]}
+""")
+
+entrada  = input(IadjP)
 
 
 #Para verificar que la entrada sea solo una letra
-#COABC
+entrada = choose_only_abc(entrada,IadjP)
 
 
-def choose_only_abc(entrada):
-    while entrada != "a" and entrada != "b" and entrada != "c":
-        print("Elije una letra que sea valida por favor")
-        print (f"""
-    {sust}
+#Para convertir la letra en respuesta
+entrada = letra_respuesta(entrada,opciones)
 
-    a = {opciones[0]}
-    b = {opciones[1]}
-    c = {opciones[2]}
+
+while entrada != respuesta_correcta and intentoAdj < 2:
+    intentoAdj = intentoAdj + 1
+    print(f"""
+    Error! Intenta de nuevo!
+    
+    Llevas {intentoAdj} intentos
+    
+ {adj_descripcion}
+
+a = {opciones[0]}
+b = {opciones[1]}
+c = {opciones[2]}
     """)
-        entrada = input("Cual es un sustantivo? ")
-    return(entrada)
+    entrada = input(IadjP)
 
 
+    #Para verificar que la entrada sea solo una letra
+    entrada = choose_only_abc(entrada,IadjP)
+    
 
+    #Para convertir la letra en respuesta
+    entrada = letra_respuesta(entrada,opciones)
 
-
-#Para verificar que la entrada sea solo una letra
-#COABC
-
-def pregunta_categoria_gramatical ():
-    IsustP = input("Cual es un sustantivo? ")
-    IadjP = input ("Cual es un adjetivo? ")
-    IverbP = input ("Cual es un verbo? ")
-    Qvalid_letter = "Elije una letra que sea valida por favor"
-    opciones = """
-    a = {opciones[0]}
-    b = {opciones[1]}
-    c = {opciones[2]}"""
-    return (IsustP, IadjP, IverbP, Qvalid_letter, opciones)
-
-IsustP, IadjP, IverbP, Qvalid_letter, opciones = pregunta_categoria_gramatical()
-
-def choose_only_abc(entrada,IsustP):
-    while entrada != "a" and entrada != "b" and entrada != "c":
-        print("Elije una letra que sea valida por favor")
-        print (f"""
-    {sust}
-
-    a = {opciones[0]}
-    b = {opciones[1]}
-    c = {opciones[2]}
+if entrada == respuesta_correcta:
+    RC = RC + 1
+    print(f"""
+    Correcto! {entrada} es un {adj_palabra}!
+    
+    Llevas {RC} puntos!
     """)
-        entrada = IsustP
-    return(entrada)
+
+else:
+      intentoAdj = intentoAdj + 1
+      print(f"""
+      Llevas {intentoAdj} intentos
+      
+      Lo siento! te quedaste sin intentos!
+      """)
