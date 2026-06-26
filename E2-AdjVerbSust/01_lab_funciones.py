@@ -51,16 +51,19 @@ sustantivo = ["casa", "perro", "medico", "computadora", "mexico", "amor", "guita
 adjetivo = ["grande", "inteligente", "rapido", "azul", "antiguo", "amable", "roto", "brillante", "frio", "divertido"]
 verbo = ["correr", "cantar", "aprender", "escribir", "dormir", "construir", "pensar", "cocinar", "escuchar", "viajar" ]
 
-#SECCION DE VARIABLES
+#################          SECCION DE VARIABLES
 #Para hacer generico el siguiente while y poder imprimirlo se añade:
 sust_descripcion = """Un sustantivo es el nombre de algo, 
  puede ser persona, animal o cosa. Si:"""
 sust_palabra = "Sustantivo "
 adj_descripcion = """Un adjetivo es una palabra que describe
 algo como, grande, frio, caliente. Si: """
-adj_palabra = "Adjetivo"
+adj_palabra = "Adjetivo "
+verb_descripcion = """Un verbo es una accion, es algo que alguien 
+    hace como correr, cantar aprender, escribir. Si: """
+verb_palabra = "Verbo "
 
-#SECCION DE FUNCIONES
+##################           SECCION DE FUNCIONES
 
 #Opciones random barajadas (ORB) = cada respuesta elegida al azar se muestra en diferente orden
 def ORB():
@@ -92,7 +95,7 @@ def letra_respuesta(entrada, opciones):
 
 
 #Para generalizar funcion choose only
-def pregunta_categoria_gramatical ():
+def textos_categoria_gramatical ():
     IsustP = "Cual es un sustantivo? "
     IadjP = "Cual es un adjetivo? "
     IverbP = "Cual es un verbo? "
@@ -100,28 +103,28 @@ def pregunta_categoria_gramatical ():
     
     return (IsustP, IadjP, IverbP, Qvalid_letter)
 
-IsustP, IadjP, IverbP, Qvalid_letter = pregunta_categoria_gramatical()
+IsustP, IadjP, IverbP, Qvalid_letter = textos_categoria_gramatical()
 
 
 #Para que el usuario solo pueda dar una letra valida: a,b o c
-def choose_only_abc(entrada,IsustP):
+def choose_only_abc(entrada,gramatica, desc_categoria):
     while entrada != "a" and entrada != "b" and entrada != "c":
         print(Qvalid_letter)
         print (f"""
-{sust_descripcion}
+{desc_categoria}
 
 a = {opciones[0]}
 b = {opciones[1]}
 c = {opciones[2]}
 """)
    
-        entrada = input (IsustP)
+        entrada = input (gramatica)
     return(entrada)
 
+#NOTA: Se pone gramatica como nombre para saber que ahi puedo utilizar verbos, adjetivos y sustantivos segun corresponda y asi dejar general la funcion. (No se movio en lab 02 y 03 porque solo era una palabra para hacer commit)
 
 
-
-#Seccion de SUSTANTIVOS
+####################### INICIA PROGRAMA SECCION DE SUSTANTIVOS #########################
 
 #Lo que ya me dio COABC lo integro en la siguiente linea:
 respuesta_correcta = sustCorrecto
@@ -143,7 +146,7 @@ entrada = input(IsustP)
 
 
 #Para verificar que la entrada sea solo una letra -COABC
-entrada = choose_only_abc(entrada, IsustP)
+entrada = choose_only_abc(entrada, IsustP, sust_descripcion)
 
 #Para convertir la letra en respuesta
 entrada = letra_respuesta(entrada,opciones)
@@ -167,7 +170,7 @@ c = {opciones[2]}
 
 
     #Para verificar que la entrada sea solo una letra
-    entrada = choose_only_abc(entrada,IsustP)
+    entrada = choose_only_abc(entrada,IsustP, sust_descripcion)
 
     #Para convertir la letra en respuesta
     entrada = letra_respuesta(entrada,opciones)
@@ -189,7 +192,10 @@ else:
       """)
 
 
-#Seccion de ADJETIVOS
+###################                   SECCION DE ADJETIVOS              ######################
+
+#Paraa que tenga nuevas palabras:
+sustCorrecto, adjCorrecto, verbCorrecto, opciones = ORB()
 
 #En la siguiente linea integro lo que me dio COABC
 respuesta_correcta = adjCorrecto
@@ -209,7 +215,7 @@ entrada  = input(IadjP)
 
 
 #Para verificar que la entrada sea solo una letra
-entrada = choose_only_abc(entrada,IadjP)
+entrada = choose_only_abc(entrada,IadjP, adj_descripcion)
 
 
 #Para convertir la letra en respuesta
@@ -233,7 +239,7 @@ c = {opciones[2]}
 
 
     #Para verificar que la entrada sea solo una letra
-    entrada = choose_only_abc(entrada,IadjP)
+    entrada = choose_only_abc(entrada,IadjP, adj_descripcion)
     
 
     #Para convertir la letra en respuesta
@@ -254,3 +260,72 @@ else:
       
       Lo siento! te quedaste sin intentos!
       """)
+
+
+#########################                 SECCION DE VERBOS             ####################
+
+#Paraa que tenga nuevas palabras:
+sustCorrecto, adjCorrecto, verbCorrecto, opciones = ORB()
+
+#En la siguiente linea integro lo que me dio COABC
+respuesta_correcta = verbCorrecto
+
+#Contadores
+intentoVerb = 0
+
+
+print (f"""
+{verb_descripcion}
+       
+a = {opciones[0]}
+b = {opciones[1]}
+c = {opciones[2]}
+""")
+
+entrada = input(IverbP)
+
+
+#Para verificar que la entrada sea solo una letra
+entrada = choose_only_abc(entrada, IverbP, verb_descripcion)
+
+#Para convertir la letra en respuesta
+entrada = letra_respuesta(entrada,opciones)
+
+
+while entrada != respuesta_correcta and intentoVerb < 2:
+    intentoVerb = intentoVerb + 1
+    print(f"""
+    Error! Intenta de nuevo!
+    
+    Llevas {intentoVerb} intentos
+    
+{verb_descripcion}
+
+a = {opciones[0]}
+b = {opciones[1]}
+c = {opciones[2]}
+    """)
+
+    entrada = input(IverbP)
+
+    #Para verificar que la entrada sea solo una letra
+    entrada = choose_only_abc (entrada, IverbP, verb_descripcion)
+
+    #Para convertir la letra en respuesta
+    entrada = letra_respuesta(entrada, opciones)
+
+
+if entrada == respuesta_correcta:
+    RC = RC + 1
+    print(f"""
+    Correcto! {entrada} es un {verb_palabra}!
+    Llevas {RC} puntos!
+    """)
+else:
+      intentoVerb = intentoVerb + 1
+      print(f"""
+      Llevas {intentoVerb} intentos
+      
+      Lo siento! te quedaste sin intentos!
+      """)
+
