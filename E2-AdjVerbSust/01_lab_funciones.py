@@ -107,15 +107,15 @@ IsustP, IadjP, IverbP, Qvalid_letter = textos_categoria_gramatical()
 
 
 #Para que el usuario solo pueda dar una letra valida: a,b o c
-def choose_only_abc(entrada,gramatica, desc_categoria):
+def choose_only_abc(entrada,gramatica, desc_categoria, lista):
     while entrada != "a" and entrada != "b" and entrada != "c":
         print(Qvalid_letter)
         print (f"""
 {desc_categoria}
 
-a = {opciones[0]}
-b = {opciones[1]}
-c = {opciones[2]}
+a = {lista[0]}
+b = {lista[1]}
+c = {lista[2]}
 """)
    
         entrada = input (gramatica)
@@ -146,7 +146,7 @@ entrada = input(IsustP)
 
 
 #Para verificar que la entrada sea solo una letra -COABC
-entrada = choose_only_abc(entrada, IsustP, sust_descripcion)
+entrada = choose_only_abc(entrada, IsustP, sust_descripcion,opciones)
 
 #Para convertir la letra en respuesta
 entrada = letra_respuesta(entrada,opciones)
@@ -170,7 +170,7 @@ c = {opciones[2]}
 
 
     #Para verificar que la entrada sea solo una letra
-    entrada = choose_only_abc(entrada,IsustP, sust_descripcion)
+    entrada = choose_only_abc(entrada,IsustP, sust_descripcion,opciones)
 
     #Para convertir la letra en respuesta
     entrada = letra_respuesta(entrada,opciones)
@@ -215,7 +215,7 @@ entrada  = input(IadjP)
 
 
 #Para verificar que la entrada sea solo una letra
-entrada = choose_only_abc(entrada,IadjP, adj_descripcion)
+entrada = choose_only_abc(entrada,IadjP, adj_descripcion,opciones)
 
 
 #Para convertir la letra en respuesta
@@ -239,7 +239,7 @@ c = {opciones[2]}
 
 
     #Para verificar que la entrada sea solo una letra
-    entrada = choose_only_abc(entrada,IadjP, adj_descripcion)
+    entrada = choose_only_abc(entrada,IadjP, adj_descripcion,opciones)
     
 
     #Para convertir la letra en respuesta
@@ -286,7 +286,7 @@ entrada = input(IverbP)
 
 
 #Para verificar que la entrada sea solo una letra
-entrada = choose_only_abc(entrada, IverbP, verb_descripcion)
+entrada = choose_only_abc(entrada, IverbP, verb_descripcion,opciones)
 
 #Para convertir la letra en respuesta
 entrada = letra_respuesta(entrada,opciones)
@@ -309,7 +309,7 @@ c = {opciones[2]}
     entrada = input(IverbP)
 
     #Para verificar que la entrada sea solo una letra
-    entrada = choose_only_abc (entrada, IverbP, verb_descripcion)
+    entrada = choose_only_abc (entrada, IverbP, verb_descripcion,opciones)
 
     #Para convertir la letra en respuesta
     entrada = letra_respuesta(entrada, opciones)
@@ -329,3 +329,96 @@ else:
       Lo siento! te quedaste sin intentos!
       """)
 
+######################## PREGUNTA EXTRA #################################
+#opciones/elige
+
+mama = "Mama ama mas a Alice"
+alice = "Alice ama mas a Mama"
+papa = "Papa ama mas a Alice"
+
+elige = [mama,alice,papa]
+random.shuffle(elige)
+
+Q_mas_extra = "Por favor contesta la pregunta mas importante. Si: "
+Who_more = "Quien ama mas a quien? "
+
+respuesta_correcta = mama
+
+print(f"""
+{Q_mas_extra}
+
+a = {elige[0]}
+b = {elige[1]}
+c = {elige[2]}
+""")
+mas = input(Who_more)
+
+
+#Para verificar que la entrada sea solo una letra
+mas = choose_only_abc(mas,Who_more,Q_mas_extra,elige)
+
+
+#Para convertir la letra en respuesta
+mas = letra_respuesta(mas, elige)
+
+
+while mas != respuesta_correcta:
+     print(f"""
+     Incorrecto! Intentalo de nuevo! Si:
+     
+a = {elige[0]}
+b = {elige[1]}
+c = {elige[2]}
+    """)
+
+     mas = input("Quien ama mas a quien? ")
+
+
+     #Para verificar que la entrada sea solo una letra
+     mas = choose_only_abc(mas,Who_more,Q_mas_extra,elige)
+
+
+     #Para convertir la letra en respuesta
+     mas = letra_respuesta(mas, elige)
+
+
+RC = RC + 1     
+print( f"""
+    Correcto! Mama ama mas a Alice!
+    Llevas {RC} puntos!
+""")
+
+
+#EVALUACION
+
+msj4 = "Excelente trabajo!! \nTodas tus respuestas fueron correctas! \nFelicidades! Sacaste 100!"
+msj3 = "Ya casi lo logras! \nExcelente trabajo! \nSacaste 80!"
+msj2 = "Vas mejorando! Muy bien! \nSigue practicando! \nSacaste 60!"
+msj1 = "No pasa nada!\nSigamos practicando!"
+msj0 = "Tranquila, volveremos a intentarlo!"
+
+def evaluacion_final ():
+     
+     if RC == 4:
+        print (f"Tuviste {RC} preguntas correctas de 4!")
+        print (msj4)
+
+     elif RC == 3:
+            print (f"Tuviste {RC} preguntas correctas de 4!")
+            print (msj3)
+
+     elif RC == 2:
+            print (f"Tuviste {RC} preguntas correctas de 4!")
+            print (msj2)   
+
+     elif RC == 1:
+            print (f"Tuviste {RC} preguntas correctas de 4!")
+            print (msj1)
+
+     elif RC == 0:
+            print(f"Tuviste {RC} preguntas correctas de 4")
+            print(msj0)
+
+
+
+evaluacion_final()
