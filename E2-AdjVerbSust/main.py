@@ -45,10 +45,8 @@ def ORB():
     random.shuffle(opciones)
 
     return(sustCorrecto,adjCorrecto,verbCorrecto,opciones)
-#regreso opciones como lista para imprimirla y cada valor por si solo para poder utilizar solo verbCorrecto en la seccion de verbos, etc
 
 sustCorrecto, adjCorrecto, verbCorrecto, opciones = ORB()
-
 
 
 #Para convertir letra en respuesta
@@ -77,21 +75,21 @@ IsustP, IadjP, IverbP, Qvalid_letter = textos_categoria_gramatical()
 
 
 #Para que el usuario solo pueda dar una letra valida: a,b o c
-def choose_only_abc(entrada,gramatica, desc_categoria):
+def choose_only_abc(entrada,gramatica, desc_categoria, lista):
     while entrada != "a" and entrada != "b" and entrada != "c":
         print(Qvalid_letter)
         print (f"""
 {desc_categoria}
 
-a = {opciones[0]}
-b = {opciones[1]}
-c = {opciones[2]}
+a = {lista[0]}
+b = {lista[1]}
+c = {lista[2]}
 """)
    
         entrada = input (gramatica)
     return(entrada)
 
-#NOTA: Se pone gramatica como nombre para saber que ahi puedo utilizar verbos, adjetivos y sustantivos segun corresponda y asi dejar general la funcion. (No se movio en lab 02 y 03 porque solo era una palabra para hacer commit)
+#NOTA: Se hace mas general la funcion añadiendo: lista, permitiendo se utilice opciones y elige
 
 
 ####################### INICIA PROGRAMA SECCION DE SUSTANTIVOS #########################
@@ -116,7 +114,7 @@ entrada = input(IsustP)
 
 
 #Para verificar que la entrada sea solo una letra -COABC
-entrada = choose_only_abc(entrada, IsustP, sust_descripcion)
+entrada = choose_only_abc(entrada, IsustP, sust_descripcion,opciones)
 
 #Para convertir la letra en respuesta
 entrada = letra_respuesta(entrada,opciones)
@@ -140,7 +138,7 @@ c = {opciones[2]}
 
 
     #Para verificar que la entrada sea solo una letra
-    entrada = choose_only_abc(entrada,IsustP, sust_descripcion)
+    entrada = choose_only_abc(entrada,IsustP, sust_descripcion,opciones)
 
     #Para convertir la letra en respuesta
     entrada = letra_respuesta(entrada,opciones)
@@ -185,7 +183,7 @@ entrada  = input(IadjP)
 
 
 #Para verificar que la entrada sea solo una letra
-entrada = choose_only_abc(entrada,IadjP, adj_descripcion)
+entrada = choose_only_abc(entrada,IadjP, adj_descripcion, opciones)
 
 
 #Para convertir la letra en respuesta
@@ -209,7 +207,7 @@ c = {opciones[2]}
 
 
     #Para verificar que la entrada sea solo una letra
-    entrada = choose_only_abc(entrada,IadjP, adj_descripcion)
+    entrada = choose_only_abc(entrada,IadjP, adj_descripcion, opciones)
     
 
     #Para convertir la letra en respuesta
@@ -256,7 +254,7 @@ entrada = input(IverbP)
 
 
 #Para verificar que la entrada sea solo una letra
-entrada = choose_only_abc(entrada, IverbP, verb_descripcion)
+entrada = choose_only_abc(entrada, IverbP, verb_descripcion, opciones)
 
 #Para convertir la letra en respuesta
 entrada = letra_respuesta(entrada,opciones)
@@ -279,7 +277,7 @@ c = {opciones[2]}
     entrada = input(IverbP)
 
     #Para verificar que la entrada sea solo una letra
-    entrada = choose_only_abc (entrada, IverbP, verb_descripcion)
+    entrada = choose_only_abc (entrada, IverbP, verb_descripcion, opciones)
 
     #Para convertir la letra en respuesta
     entrada = letra_respuesta(entrada, opciones)
@@ -300,41 +298,33 @@ else:
       """)
 
 
-#Pregunta extra de juego
-
+######################## PREGUNTA EXTRA #################################
+#opciones/elige
 
 mama = "Mama ama mas a Alice"
 alice = "Alice ama mas a Mama"
 papa = "Papa ama mas a Alice"
 
-
 elige = [mama,alice,papa]
 random.shuffle(elige)
+
+Q_mas_extra = "Por favor contesta la pregunta mas importante. Si: "
+Who_more = "Quien ama mas a quien? "
 
 respuesta_correcta = mama
 
 print(f"""
-Hora de la pregunta mas importante! Si:
+{Q_mas_extra}
 
 a = {elige[0]}
 b = {elige[1]}
 c = {elige[2]}
 """)
-mas = input("Quien ama mas a quien?")
+mas = input(Who_more)
 
 
 #Para verificar que la entrada sea solo una letra
-
-while mas != "a" and mas != "b" and mas != "c" and mas != "d":
-     print("Elije una letra que sea valida por favor")
-     print (f"""
-Por favor contesta la pregunta mas importante. Si:
-
-a = {elige[0]}
-b = {elige[1]}
-c = {elige[2]}
-""")
-     mas = input("Quien ama mas a quien?")
+mas = choose_only_abc(mas,Who_more,Q_mas_extra,elige)
 
 
 #Para convertir la letra en respuesta
@@ -353,16 +343,8 @@ c = {elige[2]}
      mas = input("Quien ama mas a quien? ")
 
 
-     while mas != "a" and mas != "b" and mas != "c" and mas != "d":
-        print("Elije una letra que sea valida por favor")
-        print (f"""
-    Por favor contesta la pregunta mas importante. Si:
-
-    a = {elige[0]}
-    b = {elige[1]}
-    c = {elige[2]}
-    """)
-        mas = input("Quien ama mas a quien?")
+     #Para verificar que la entrada sea solo una letra
+     mas = choose_only_abc(mas,Who_more,Q_mas_extra,elige)
 
 
      #Para convertir la letra en respuesta
@@ -385,7 +367,7 @@ msj1 = "No pasa nada!\nSigamos practicando!"
 msj0 = "Tranquila, volveremos a intentarlo!"
 
 def evaluacion_final ():
-     print("Entre a la funcion")
+     
      if RC == 4:
         print (f"Tuviste {RC} preguntas correctas de 4!")
         print (msj4)
