@@ -46,8 +46,6 @@ def ORB():
 
     return(sustCorrecto,adjCorrecto,verbCorrecto,opciones)
 
-sustCorrecto, adjCorrecto, verbCorrecto, opciones = ORB()
-
 
 #Para convertir letra en respuesta
 def letra_respuesta(entrada, opciones): 
@@ -89,214 +87,91 @@ c = {lista[2]}
         entrada = input (gramatica)
     return(entrada)
 
-#NOTA: Se hace mas general la funcion añadiendo: lista, permitiendo se utilice opciones y elige
+
+#Se añade funcion general para quitar repeticion de la misma secuencia de verbos, adjetivos y sustantivos
+
+def pregunta_categoria (cat_correcta, descricpion_cat, pregunta_cat,cat_palabra, opciones):
+
+    respuesta_correcta = cat_correcta
+
+    intento_cat = 0
+
+    print (f"""
+    {descricpion_cat}
+
+    a = {opciones[0]}
+    b = {opciones[1]}
+    c = {opciones[2]}
+    """)
+    # Como se generaliza se cambia sust por entrada
+    entrada = input(pregunta_cat)
 
 
-####################### INICIA PROGRAMA SECCION DE SUSTANTIVOS #########################
+    #Para verificar que la entrada sea solo una letra -COABC
+    entrada = choose_only_abc(entrada, pregunta_cat, descricpion_cat,opciones)
 
-#Lo que ya me dio COABC lo integro en la siguiente linea:
-respuesta_correcta = sustCorrecto
+    #Para convertir la letra en respuesta
+    entrada = letra_respuesta(entrada,opciones)
 
-#solo contadores
-intentoSus = 0
+
+    while entrada != respuesta_correcta and intento_cat < 2:
+        intento_cat = intento_cat + 1
+
+        print(f"""
+        Error! Intenta de nuevo!
+        
+        Llevas {intento_cat} intentos
+        
+    {descricpion_cat}
+
+    a = {opciones[0]}
+    b = {opciones[1]}
+    c = {opciones[2]}
+        """)
+        entrada = input(pregunta_cat)
+
+
+        #Para verificar que la entrada sea solo una letra
+        entrada = choose_only_abc(entrada,pregunta_cat, descricpion_cat,opciones)
+
+        #Para convertir la letra en respuesta
+        entrada = letra_respuesta(entrada,opciones)
+
+    if entrada == respuesta_correcta:
+        RC = 1
+        print(f"""
+        Correcto! {entrada} es un {cat_palabra}!
+        
+        Llevas {RC} punto!
+        """)
+
+    else:
+        RC = 0
+        intento_cat = intento_cat + 1
+        print(f"""
+        Llevas {intento_cat} intentos
+        
+        Lo siento! te quedaste sin intentos!
+        """)
+    return (RC)
+
+
+#################### INICIA PROGRAMA ################################
+
 RC = 0
 
-
-print (f"""
-{sust_descripcion}
-
-a = {opciones[0]}
-b = {opciones[1]}
-c = {opciones[2]}
-""")
-# Como se generaliza se cambia sust por entrada
-entrada = input(IsustP)
-
-
-#Para verificar que la entrada sea solo una letra -COABC
-entrada = choose_only_abc(entrada, IsustP, sust_descripcion,opciones)
-
-#Para convertir la letra en respuesta
-entrada = letra_respuesta(entrada,opciones)
-
-
-while entrada != respuesta_correcta and intentoSus < 2:
-    intentoSus = intentoSus + 1
-
-    print(f"""
-    Error! Intenta de nuevo!
-    
-    Llevas {intentoSus} intentos
-     
- {sust_descripcion}
-
-a = {opciones[0]}
-b = {opciones[1]}
-c = {opciones[2]}
-    """)
-    entrada = input(IsustP)
-
-
-    #Para verificar que la entrada sea solo una letra
-    entrada = choose_only_abc(entrada,IsustP, sust_descripcion,opciones)
-
-    #Para convertir la letra en respuesta
-    entrada = letra_respuesta(entrada,opciones)
-
-if entrada == respuesta_correcta:
-    RC = RC + 1
-    print(f"""
-    Correcto! {entrada} es un {sust_palabra}!
-    
-    Llevas {RC} punto!
-    """)
-
-else:
-      intentoSus = intentoSus + 1
-      print(f"""
-      Llevas {intentoSus} intentos
-      
-      Lo siento! te quedaste sin intentos!
-      """)
-
-
-###################                   SECCION DE ADJETIVOS              ######################
-
-#Paraa que tenga nuevas palabras:
+#SUSTANTIVOS
+#Para que tenga nuevas palabras:
 sustCorrecto, adjCorrecto, verbCorrecto, opciones = ORB()
+RC += pregunta_categoria(sustCorrecto, sust_descripcion,IsustP,sust_palabra, opciones)
 
-#En la siguiente linea integro lo que me dio COABC
-respuesta_correcta = adjCorrecto
-
-#Contadores
-intentoAdj = 0
-
-print (f"""
-{adj_descripcion}
-       
-a = {opciones[0]}
-b = {opciones[1]}
-c = {opciones[2]}
-""")
-
-entrada  = input(IadjP)
-
-
-#Para verificar que la entrada sea solo una letra
-entrada = choose_only_abc(entrada,IadjP, adj_descripcion, opciones)
-
-
-#Para convertir la letra en respuesta
-entrada = letra_respuesta(entrada,opciones)
-
-
-while entrada != respuesta_correcta and intentoAdj < 2:
-    intentoAdj = intentoAdj + 1
-    print(f"""
-    Error! Intenta de nuevo!
-    
-    Llevas {intentoAdj} intentos
-    
- {adj_descripcion}
-
-a = {opciones[0]}
-b = {opciones[1]}
-c = {opciones[2]}
-    """)
-    entrada = input(IadjP)
-
-
-    #Para verificar que la entrada sea solo una letra
-    entrada = choose_only_abc(entrada,IadjP, adj_descripcion, opciones)
-    
-
-    #Para convertir la letra en respuesta
-    entrada = letra_respuesta(entrada,opciones)
-
-if entrada == respuesta_correcta:
-    RC = RC + 1
-    print(f"""
-    Correcto! {entrada} es un {adj_palabra}!
-    
-    Llevas {RC} puntos!
-    """)
-
-else:
-      intentoAdj = intentoAdj + 1
-      print(f"""
-      Llevas {intentoAdj} intentos
-      
-      Lo siento! te quedaste sin intentos!
-      """)
-
-
-#########################                 SECCION DE VERBOS             ####################
-
-#Paraa que tenga nuevas palabras:
+#ADJETIVOS
 sustCorrecto, adjCorrecto, verbCorrecto, opciones = ORB()
+RC += pregunta_categoria(adjCorrecto, adj_descripcion, IadjP, adj_palabra, opciones)
 
-#En la siguiente linea integro lo que me dio COABC
-respuesta_correcta = verbCorrecto
-
-#Contadores
-intentoVerb = 0
-
-
-print (f"""
-{verb_descripcion}
-       
-a = {opciones[0]}
-b = {opciones[1]}
-c = {opciones[2]}
-""")
-
-entrada = input(IverbP)
-
-
-#Para verificar que la entrada sea solo una letra
-entrada = choose_only_abc(entrada, IverbP, verb_descripcion, opciones)
-
-#Para convertir la letra en respuesta
-entrada = letra_respuesta(entrada,opciones)
-
-
-while entrada != respuesta_correcta and intentoVerb < 2:
-    intentoVerb = intentoVerb + 1
-    print(f"""
-    Error! Intenta de nuevo!
-    
-    Llevas {intentoVerb} intentos
-    
-{verb_descripcion}
-
-a = {opciones[0]}
-b = {opciones[1]}
-c = {opciones[2]}
-    """)
-
-    entrada = input(IverbP)
-
-    #Para verificar que la entrada sea solo una letra
-    entrada = choose_only_abc (entrada, IverbP, verb_descripcion, opciones)
-
-    #Para convertir la letra en respuesta
-    entrada = letra_respuesta(entrada, opciones)
-
-
-if entrada == respuesta_correcta:
-    RC = RC + 1
-    print(f"""
-    Correcto! {entrada} es un {verb_palabra}!
-    Llevas {RC} puntos!
-    """)
-else:
-      intentoVerb = intentoVerb + 1
-      print(f"""
-      Llevas {intentoVerb} intentos
-      
-      Lo siento! te quedaste sin intentos!
-      """)
-
+#VERBOS
+sustCorrecto, adjCorrecto, verbCorrecto, opciones = ORB()
+RC += pregunta_categoria(verbCorrecto, verb_descripcion,IverbP, verb_palabra, opciones)
 
 ######################## PREGUNTA EXTRA #################################
 #opciones/elige
